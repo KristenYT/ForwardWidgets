@@ -1,24 +1,24 @@
 // =============UserScript=============
-// @name         影视聚合查询组件
+// @name         影視聚合查詢組件
 // @version      1.2.7
-// @description  聚合查询豆瓣/TMDB/IMDB/BGM影视数据
-// @author       阿米诺斯
+// @description  聚合查詢豆瓣/TMDB/IMDB/BGM影視數據
+// @author       阿米諾斯
 // =============UserScript=============
 WidgetMetadata = {
   id: "forward.combined.media.lists",
-  title: "影视榜单",
-  description: "聚合豆瓣、TMDB、IMDB和Bangumi的影视动画榜单",
-  author: "阿米诺斯",
+  title: "影視榜單",
+  description: "聚合豆瓣、TMDB、IMDB和Bangumi的影視動畫榜單",
+  author: "阿米諾斯",
   site: "https://github.com/quantumultxx/FW-Widgets",
   version: "1.2.7",
   requiredVersion: "0.0.1",
   detailCacheDuration: 60,
   modules: [
-    // =============豆瓣模块=============
-    // --- 🔥 实时热点 ---
+    // =============豆瓣模組=============
+    // --- 🔥 即時熱點 ---
     {
-      title: "豆瓣电影实时热榜",
-      description: "来自豆瓣的当前热门电影榜单",
+      title: "豆瓣電影即時熱榜",
+      description: "來自豆瓣的當前熱門電影榜單",
       requiresWebView: false,
       functionName: "loadDoubanItemsFromApi",
       cacheDuration: 3600,
@@ -28,16 +28,16 @@ WidgetMetadata = {
           type: "constant", 
           value: "https://m.douban.com/rexxar/api/v2/subject_collection/movie_real_time_hotest/items" },
         { name: "type", 
-          title: "🎭 类型", 
+          title: "🎭 類型", 
           type: "constant", 
           value: "movie" },
-        { name: "page", title: "页码", type: "page" },
-        { name: "limit", title: "🔢 每页数量", type: "constant", value: "20" }
+        { name: "page", title: "頁碼", type: "page" },
+        { name: "limit", title: "🔢 每頁數量", type: "constant", value: "20" }
       ]
     },
     {
-      title: "豆瓣剧集实时热榜",
-      description: "来自豆瓣的当前热门剧集榜单",
+      title: "豆瓣劇集即時熱榜",
+      description: "來自豆瓣的當前熱門劇集榜單",
       requiresWebView: false,
       functionName: "loadDoubanItemsFromApi",
       cacheDuration: 3600,
@@ -47,18 +47,18 @@ WidgetMetadata = {
           type: "constant", 
           value: "https://m.douban.com/rexxar/api/v2/subject_collection/tv_real_time_hotest/items" },
         { name: "type", 
-          title: "🎭 类型", 
+          title: "🎭 類型", 
           type: "constant", 
           value: "tv" },
-        { name: "page", title: "页码", type: "page" },
-        { name: "limit", title: "🔢 每页数量", type: "constant", value: "20" }
+        { name: "page", title: "頁碼", type: "page" },
+        { name: "limit", title: "🔢 每頁數量", type: "constant", value: "20" }
       ]
     },
 
-    // --- 🏆 精选榜单 ---
+    // --- 🏆 精選榜單 ---
     {
-      title: "豆瓣 Top 250 电影",
-      description: "豆瓣评分最高的 250 部电影",
+      title: "豆瓣 Top 250 電影",
+      description: "豆瓣評分最高的 250 部電影",
       requiresWebView: false,
       functionName: "loadDoubanCardItems",
       cacheDuration: 3600,
@@ -67,13 +67,13 @@ WidgetMetadata = {
           title: "🔗 列表地址", 
           type: "constant", 
           value: "https://m.douban.com/subject_collection/movie_top250" },
-        { name: "page", title: "页码", type: "page" },
-        { name: "limit", title: "🔢 每页数量", type: "constant", value: "20" }
+        { name: "page", title: "頁碼", type: "page" },
+        { name: "limit", title: "🔢 每頁數量", type: "constant", value: "20" }
       ]
     },
     {
-      title: "豆瓣自定义片单",
-      description: "加载豆瓣官方榜单或用户豆列 (需输入 URL)",
+      title: "豆瓣自訂片單",
+      description: "載入豆瓣官方榜單或用戶豆列 (需輸入 URL)",
       requiresWebView: false,
       functionName: "loadDoubanCardItems",
       cacheDuration: 3600,
@@ -82,63 +82,63 @@ WidgetMetadata = {
           name: "url", 
           title: "🔗 列表地址", 
           type: "input", 
-          description: "输入豆瓣片单或榜单地址 (subject_collection 或 doulist)",
+          description: "輸入豆瓣片單或榜單地址 (subject_collection 或 doulist)",
           placeholders: [
-            { title: "一周电影口碑榜", 
+            { title: "一週電影口碑榜", 
               value: "https://m.douban.com/subject_collection/movie_weekly_best" },
-            { title: "一周华语口碑剧集榜", 
+            { title: "一週華語口碑劇集榜", 
               value: "https://m.douban.com/subject_collection/tv_chinese_best_weekly" },
-            { title: "一周全球口碑剧集榜", 
+            { title: "一週全球口碑劇集榜", 
               value: "https://m.douban.com/subject_collection/tv_global_best_weekly" },
-            { title: "第97届奥斯卡 (2025)", 
+            { title: "第97屆奧斯卡 (2025)", 
               value: "https://m.douban.com/subject_collection/EC7I7ZDRA?type=rank" }
           ]
         },
-        { name: "page", title: "页码", type: "page" },
-        { name: "limit", title: "🔢 每页数量", type: "constant", value: "20" }
+        { name: "page", title: "頁碼", type: "page" },
+        { name: "limit", title: "🔢 每頁數量", type: "constant", value: "20" }
       ]
     },
 
-    // --- 🎬 探索发现 ---
+    // --- 🎬 探索發現 ---
     {
-      title: "豆瓣电影推荐",
-      description: "按分类、地区、类型标签浏览豆瓣推荐电影",
+      title: "豆瓣電影推薦",
+      description: "按分類、地區、類型標籤瀏覽豆瓣推薦電影",
       requiresWebView: false,
       functionName: "loadDoubanRecommendMovies",
       cacheDuration: 3600,
       params: [
         {
           name: "category", 
-          title: "🏷️ 分类", 
+          title: "🏷️ 分類", 
           type: "enumeration",
           enumOptions: [ 
             { title: "全部", value: "全部" }, 
-            { title: "热门电影", value: "热门" }, 
-            { title: "最新电影", value: "最新" }, 
+            { title: "熱門電影", value: "熱門" }, 
+            { title: "最新電影", value: "最新" }, 
             { title: "豆瓣高分", value: "豆瓣高分" }, 
-            { title: "冷门佳片", value: "冷门佳片" } 
+            { title: "冷門佳片", value: "冷門佳片" } 
           ],
         },
         {
           name: "type", 
-          title: "🌍 地区", 
+          title: "🌍 地區", 
           type: "enumeration",
           value: "全部",
           belongTo: {
             paramName: "category",
-            value: ["热门","最新","豆瓣高分","冷门佳片"],
+            value: ["熱門","最新","豆瓣高分","冷門佳片"],
           },
           enumOptions: [ 
             { title: "全部", value: "全部" }, 
-            { title: "华语", value: "华语" }, 
-            { title: "欧美", value: "欧美" }, 
-            { title: "韩国", value: "韩国" }, 
+            { title: "華語", value: "華語" }, 
+            { title: "歐美", value: "歐美" }, 
+            { title: "韓國", value: "韓國" }, 
             { title: "日本", value: "日本" } 
           ],
         },
         {
           name: "tags", 
-          title: "🎭 类型", 
+          title: "🎭 類型", 
           type: "enumeration",
           value: "",
           belongTo: {
@@ -147,33 +147,33 @@ WidgetMetadata = {
           },
           enumOptions: [
             { title: "全部", value: "" },
-            { title: "动作", value: "动作" },
+            { title: "動作", value: "動作" },
             { title: "科幻", value: "科幻" },
-            { title: "灾难", value: "灾难" },
-            { title: "爱情", value: "爱情" },
-            { title: "喜剧", value: "喜剧" },
-            { title: "悬疑", value: "悬疑" },
+            { title: "災難", value: "災難" },
+            { title: "愛情", value: "愛情" },
+            { title: "喜劇", value: "喜劇" },
+            { title: "懸疑", value: "懸疑" },
             { title: "犯罪", value: "犯罪" },
-            { title: "冒险", value: "冒险" },
+            { title: "冒險", value: "冒險" },
             { title: "奇幻", value: "奇幻" },
-            { title: "战争", value: "战争" },
-            { title: "历史", value: "历史" },
-            { title: "武侠", value: "武侠" },
-            { title: "惊悚", value: "惊悚" },
+            { title: "戰爭", value: "戰爭" },
+            { title: "歷史", value: "歷史" },
+            { title: "武俠", value: "武俠" },
+            { title: "驚悚", value: "驚悚" },
             { title: "恐怖", value: "恐怖" },
             { title: "情色", value: "情色" },
-            { title: "动画", value: "动画" },
-            { title: "剧情", value: "剧情" },
+            { title: "動畫", value: "動畫" },
+            { title: "劇情", value: "劇情" },
             { title: "西部", value: "西部" },
             { title: "家庭", value: "家庭" },
-            { title: "儿童", value: "儿童" },
-            { title: "音乐", value: "音乐" },
-            { title: "运动", value: "运动" },
-            { title: "古装", value: "古装" },
+            { title: "兒童", value: "兒童" },
+            { title: "音樂", value: "音樂" },
+            { title: "運動", value: "運動" },
+            { title: "古裝", value: "古裝" },
             { title: "歌舞", value: "歌舞" },
-            { title: "传记", value: "传记" },
+            { title: "傳記", value: "傳記" },
             { title: "短片", value: "短片" },
-            { title: "纪录片", value: "纪录片" }
+            { title: "紀錄片", value: "紀錄片" }
           ]
         },
         {
@@ -182,124 +182,124 @@ WidgetMetadata = {
           type: "enumeration",
           value: "T",
           enumOptions: [
-            { title: "综合排序", value: "T" },
-            { title: "近期热度", value: "U" },
-            { title: "首映时间", value: "R" },
-            { title: "高分优选", value: "S" }
+            { title: "綜合排序", value: "T" },
+            { title: "近期熱度", value: "U" },
+            { title: "首映時間", value: "R" },
+            { title: "高分優選", value: "S" }
           ]
         },
-        { name: "page", title: "页码", type: "page" },
-        { name: "limit", title: "🔢 每页数量", type: "constant", value: "20" }
+        { name: "page", title: "頁碼", type: "page" },
+        { name: "limit", title: "🔢 每頁數量", type: "constant", value: "20" }
       ]
     },
     {
-      title: "豆瓣剧集推荐",
-      description: "按分类、类型浏览豆瓣推荐剧集",
+      title: "豆瓣劇集推薦",
+      description: "按分類、類型瀏覽豆瓣推薦劇集",
       requiresWebView: false,
       functionName: "loadDoubanRecommendShows",
       cacheDuration: 3600,
       params: [
         {
           name: "type", 
-          title: "🎭 类型", 
+          title: "🎭 類型", 
           type: "enumeration",
           enumOptions: [
-            { title: "综合", value: "tv" }, 
-            { title: "国产剧", value: "tv_domestic" }, 
-            { title: "欧美剧", value: "tv_american" }, 
-            { title: "日剧", value: "tv_japanese" }, 
-            { title: "韩剧", value: "tv_korean" }, 
-            { title: "动画", value: "tv_animation" }, 
-            { title: "纪录片", value: "tv_documentary" } 
+            { title: "綜合", value: "tv" }, 
+            { title: "國產劇", value: "tv_domestic" }, 
+            { title: "歐美劇", value: "tv_american" }, 
+            { title: "日劇", value: "tv_japanese" }, 
+            { title: "韓劇", value: "tv_korean" }, 
+            { title: "動畫", value: "tv_animation" }, 
+            { title: "紀錄片", value: "tv_documentary" } 
           ],
           value: "tv"
         },
-        { name: "page", title: "页码", type: "page" },
-        { name: "limit", title: "🔢 每页数量", type: "constant", value: "20" }
+        { name: "page", title: "頁碼", type: "page" },
+        { name: "limit", title: "🔢 每頁數量", type: "constant", value: "20" }
       ]
     },
 
-    // =============TMDB模块=============
-    // --- 当前与趋势模块 ---
+    // =============TMDB模組=============
+    // --- 當前與趨勢模組 ---
     {
-        title: "TMDB 正在热映",
-        description: "当前影院或流媒体上映的电影/剧集",
+        title: "TMDB 正在熱映",
+        description: "當前影院或串流媒體上映的電影/劇集",
         requiresWebView: false,
         functionName: "tmdbNowPlaying",
         cacheDuration: 3600,
         params: [
             { 
                 name: "type", 
-                title: "🎭类型", 
+                title: "🎭類型", 
                 type: "enumeration", 
                 enumOptions: [
-                    { title: "电影", value: "movie" },
-                    { title: "剧集", value: "tv" }
+                    { title: "電影", value: "movie" },
+                    { title: "劇集", value: "tv" }
                 ], 
                 value: "movie" 
             },
-            { name: "page", title: "页码", type: "page" },
-            { name: "language", title: "语言", type: "language", value: "zh-CN" }
+            { name: "page", title: "頁碼", type: "page" },
+            { name: "language", title: "語言", type: "language", value: "zh-TW" }
         ]
     },
     {
-        title: "TMDB 本日热门",
-        description: "今日热门电影与剧集",
+        title: "TMDB 本日熱門",
+        description: "今日熱門電影與劇集",
         requiresWebView: false,
         functionName: "tmdbTrending",
         cacheDuration: 900,
         params: [
             { name: "time_window", 
-              title: "时间", 
+              title: "時間", 
               type: "constant", 
               value: "day" },
-            { name: "language", title: "语言", type: "constant", value: "zh-CN" },
-            { name: "page", title: "页码", type: "page" }
+            { name: "language", title: "語言", type: "constant", value: "zh-TW" },
+            { name: "page", title: "頁碼", type: "page" }
         ]
     },
     {
-        title: "TMDB 本周热门",
-        description: "本周热门电影与剧集",
+        title: "TMDB 本週熱門",
+        description: "本週熱門電影與劇集",
         requiresWebView: false,
         functionName: "tmdbTrending",
         cacheDuration: 900,
         params: [
             { name: "time_window", 
-              title: "时间", 
+              title: "時間", 
               type: "constant", 
               value: "week" },
-            { name: "language", title: "语言", type: "constant", value: "zh-CN" },
-            { name: "page", title: "页码", type: "page" }
+            { name: "language", title: "語言", type: "constant", value: "zh-TW" },
+            { name: "page", title: "頁碼", type: "page" }
         ]
     },
 
-    // --- 常规发现模块 ---
+    // --- 常規發現模組 ---
     {
-        title: "TMDB 高分内容",
-        description: "高分电影或剧集 (按用户评分排序)",
+        title: "TMDB 高分內容",
+        description: "高分電影或劇集 (按用戶評分排序)",
         requiresWebView: false,
         functionName: "tmdbTopRated",
         cacheDuration: 3600,
         params: [
             { 
                 name: "type", 
-                title: "🎭类型", 
+                title: "🎭類型", 
                 type: "enumeration", 
                 enumOptions: [
-                    { title: "电影", value: "movie" },
-                    { title: "剧集", value: "tv" }
+                    { title: "電影", value: "movie" },
+                    { title: "劇集", value: "tv" }
                 ], 
                 value: "movie" 
             },
-            { name: "language", title: "语言", type: "language", value: "zh-CN" },
-            { name: "page", title: "页码", type: "page" }
+            { name: "language", title: "語言", type: "language", value: "zh-TW" },
+            { name: "page", title: "頁碼", type: "page" }
         ]
     },
 
-    // --- 平台筛选模块---
+    // --- 平台篩選模組---
     {
         title: "TMDB 播出平台",
-        description: "按播出平台和内容类型筛选剧集内容",
+        description: "按播出平台和內容類型篩選劇集內容",
         requiresWebView: false,
         functionName: "tmdbDiscoverByNetwork",
         cacheDuration: 3600,
@@ -308,7 +308,7 @@ WidgetMetadata = {
                 name: "with_networks",
                 title: "播出平台",
                 type: "enumeration",
-                description: "选择一个平台以查看其剧集内容",
+                description: "選擇一個平台以查看其劇集內容",
                 value: "",
                 belongTo: {
                   paramName: "air_status",
@@ -343,37 +343,37 @@ WidgetMetadata = {
             },
             {
                 name: "with_genres",
-                title: "🎭内容类型",
+                title: "🎭內容類型",
                 type: "enumeration",
-                description: "选择要筛选的内容类型",
+                description: "選擇要篩選的內容類型",
                 value: "",
                 belongTo: {
                   paramName: "air_status",
                   value: ["released","upcoming"],
                 },
                 enumOptions: [
-                    { title: "全部类型", value: "" },
+                    { title: "全部類型", value: "" },
                     { title: "犯罪", value: "80" },
-                    { title: "动画", value: "16" },
-                    { title: "喜剧", value: "35" },
-                    { title: "剧情", value: "18" },
+                    { title: "動畫", value: "16" },
+                    { title: "喜劇", value: "35" },
+                    { title: "劇情", value: "18" },
                     { title: "家庭", value: "10751" },
-                    { title: "儿童", value: "10762" },
-                    { title: "悬疑", value: "9648" },
+                    { title: "兒童", value: "10762" },
+                    { title: "懸疑", value: "9648" },
                     { title: "真人秀", value: "10764" },
-                    { title: "脱口秀", value: "10767" },
-                    { title: "肥皂剧", value: "10766" },
-                    { title: "纪录片", value: "99" },
-                    { title: "动作与冒险", value: "10759" },
-                    { title: "科幻与奇幻", value: "10765" },
-                    { title: "战争与政治", value: "10768" }
+                    { title: "脫口秀", value: "10767" },
+                    { title: "肥皂劇", value: "10766" },
+                    { title: "紀錄片", value: "99" },
+                    { title: "動作與冒險", value: "10759" },
+                    { title: "科幻與奇幻", value: "10765" },
+                    { title: "戰爭與政治", value: "10768" }
                 ]
             },
             {
                 name: "air_status",
-                title: "上映状态",
+                title: "上映狀態",
                 type: "enumeration",
-                description: "默认已上映",
+                description: "默認已上映",
                 value: "released",
                 enumOptions: [
                     { title: "已上映", value: "released" },
@@ -384,21 +384,21 @@ WidgetMetadata = {
                 name: "sort_by",
                 title: "🔢 排序方式",
                 type: "enumeration",
-                description: "选择内容排序方式,默认上映时间↓",
+                description: "選擇內容排序方式,默認上映時間↓",
                 value: "first_air_date.desc",
                 enumOptions: [
-                    { title: "上映时间↓", value: "first_air_date.desc" },
-                    { title: "上映时间↑", value: "first_air_date.asc" },
-                    { title: "人气最高", value: "popularity.desc" },
-                    { title: "评分最高", value: "vote_average.desc" },
+                    { title: "上映時間↓", value: "first_air_date.desc" },
+                    { title: "上映時間↑", value: "first_air_date.asc" },
+                    { title: "人氣最高", value: "popularity.desc" },
+                    { title: "評分最高", value: "vote_average.desc" },
                     { title: "最多投票", value: "vote_count.desc" }
                 ]
             },
-            { name: "page", title: "页码", type: "page" },
-            { name: "language", title: "语言", type: "language", value: "zh-CN" }
+            { name: "page", title: "頁碼", type: "page" },
+            { name: "language", title: "語言", type: "language", value: "zh-TW" }
         ]
     },
-    // --- 出品公司模块 ---
+    // --- 出品公司模組 ---
     {
       id: "companies",
       title: "TMDB 出品公司",
@@ -410,7 +410,7 @@ WidgetMetadata = {
           title: "出品公司",
           type: "enumeration",
           value: "",
-          description: "选择一个公司以查看其剧集内容",
+          description: "選擇一個公司以查看其劇集內容",
           belongTo: {
             paramName: "air_status",
             value: ["released","upcoming"],
@@ -426,7 +426,7 @@ WidgetMetadata = {
             { title: "20th Century", value: "25" },
             { title: "Marvel", value: "420" },
             { title: "Toho", value: "882" },
-            { title: "中国电影集团公司", value: "14714" },
+            { title: "中國電影集團公司", value: "14714" },
             { title: "BBC", value: "3324" },
             { title: "印度", value: "1569" },
             { title: "A24", value: "41077" },
@@ -436,42 +436,42 @@ WidgetMetadata = {
         },
         {
           name: "with_genres",
-          title: "🎭内容类型",
+          title: "🎭內容類型",
           type: "enumeration",
-          description: "选择要筛选的内容类型",
+          description: "選擇要篩選的內容類型",
           value: "",
           belongTo: {
             paramName: "air_status",
             value: ["released","upcoming"],
           },
           enumOptions: [
-            { title: "全部类型", value: "" },
-            { title: "冒险", value: "12" },
-            { title: "剧情", value: "18" },
-            { title: "动作", value: "28" },
-            { title: "动画", value: "16" },
-            { title: "历史", value: "36" },
-            { title: "喜剧", value: "35" },
+            { title: "全部類型", value: "" },
+            { title: "冒險", value: "12" },
+            { title: "劇情", value: "18" },
+            { title: "動作", value: "28" },
+            { title: "動畫", value: "16" },
+            { title: "歷史", value: "36" },
+            { title: "喜劇", value: "35" },
             { title: "奇幻", value: "14" },
             { title: "家庭", value: "10751" },
             { title: "恐怖", value: "27" },
-            { title: "悬疑", value: "9648" },
-            { title: "惊悚", value: "53" },
-            { title: "战争", value: "10752" },
-            { title: "爱情", value: "10749" },
+            { title: "懸疑", value: "9648" },
+            { title: "驚悚", value: "53" },
+            { title: "戰爭", value: "10752" },
+            { title: "愛情", value: "10749" },
             { title: "犯罪", value: "80" },
             { title: "科幻", value: "878" },
-            { title: "记录", value: "99" },
+            { title: "記錄", value: "99" },
             { title: "西部", value: "37" },
-            { title: "音乐", value: "10402" },
-            { title: "电视电影", value: "10770" }
+            { title: "音樂", value: "10402" },
+            { title: "電視電影", value: "10770" }
           ]
         },
         {
           name: "air_status",
-          title: "上映状态",
+          title: "上映狀態",
           type: "enumeration",
-          description: "默认已上映",
+          description: "默認已上映",
           value: "released",
           enumOptions: [
             { title: "已上映", value: "released" },
@@ -482,116 +482,116 @@ WidgetMetadata = {
           name: "sort_by",
           title: "🔢 排序方式",
           type: "enumeration",
-          description: "选择内容排序方式,默认上映时间↓",
+          description: "選擇內容排序方式,默認上映時間↓",
           value: "primary_release_date.desc",
           enumOptions: [
-            { title: "上映时间↓", value: "primary_release_date.desc" },
-            { title: "上映时间↑", value: "primary_release_date.asc" },
-            { title: "人气最高", value: "popularity.desc" },
-            { title: "评分最高", value: "vote_average.desc" },
+            { title: "上映時間↓", value: "primary_release_date.desc" },
+            { title: "上映時間↑", value: "primary_release_date.asc" },
+            { title: "人氣最高", value: "popularity.desc" },
+            { title: "評分最高", value: "vote_average.desc" },
             { title: "最多投票", value: "vote_count.desc" }
           ]
         },
-        { name: "page", title: "页码", type: "page" },
-        { name: "language", title: "语言", type: "language", value: "zh-CN" }
+        { name: "page", title: "頁碼", type: "page" },
+        { name: "language", title: "語言", type: "language", value: "zh-TW" }
       ]
     },
 
-    // --- 高级筛选模块 ---
+    // --- 高級篩選模組 ---
     {
-        title: "TMDB 即将上映",
-        description: "即将上映的电影 (可筛选)",
+        title: "TMDB 即將上映",
+        description: "即將上映的電影 (可篩選)",
         requiresWebView: false,
         functionName: "tmdbUpcomingMovies",
         cacheDuration: 3600,
         params: [
-            { name: "language", title: "语言", type: "language", value: "zh-CN" },
+            { name: "language", title: "語言", type: "language", value: "zh-TW" },
             { 
                 name: "primary_release_date.gte", 
                 title: "起始日期 (含)", 
                 type: "input", 
-                description: "格式：YYYY-MM-DD（默认今天）", 
+                description: "格式：YYYY-MM-DD（默認今天）", 
                 value: "",
                 placeholder: "例：2023-12-31"
             },
             { 
                 name: "primary_release_date.lte", 
-                title: "结束日期 (含)", 
+                title: "結束日期 (含)", 
                 type: "input", 
-                description: "格式：YYYY-MM-DD（可选）", 
+                description: "格式：YYYY-MM-DD（可選）", 
                 value: "",
                 placeholder: "例：2024-05-01"
             },
             { 
                 name: "with_release_type", 
-                title: "发行渠道", 
+                title: "發行渠道", 
                 type: "enumeration", 
-                description: "选择发行渠道（多选用逗号分隔）", 
+                description: "選擇發行渠道（多選用逗號分隔）", 
                 value: "2,3",
                 enumOptions: [ 
-                    { title: "影院上映 (优先)", value: "2,3" },
+                    { title: "影院上映 (優先)", value: "2,3" },
                     { title: "全部渠道", value: "" }, 
-                    { title: "数字发行", value: "4" }, 
-                    { title: "实体发行", value: "5" }, 
-                    { title: "电视播出", value: "6" }
+                    { title: "數字發行", value: "4" }, 
+                    { title: "實體發行", value: "5" }, 
+                    { title: "電視播出", value: "6" }
                 ] 
             },
             { 
                 name: "with_genres", 
-                title: "🎭类型筛选", 
+                title: "🎭類型篩選", 
                 type: "enumeration", 
-                description: "选择电影类型", 
+                description: "選擇電影類型", 
                 value: "",
                 enumOptions: [ 
-                    { title: "任意类型", value: "" }, 
-                    { title: "动作", value: "28" }, 
-                    { title: "冒险", value: "12" },
-                    { title: "动画", value: "16" }, 
-                    { title: "喜剧", value: "35" }, 
+                    { title: "任意類型", value: "" }, 
+                    { title: "動作", value: "28" }, 
+                    { title: "冒險", value: "12" },
+                    { title: "動畫", value: "16" }, 
+                    { title: "喜劇", value: "35" }, 
                     { title: "犯罪", value: "80" },
-                    { title: "纪录", value: "99" }, 
-                    { title: "剧情", value: "18" }, 
+                    { title: "紀錄", value: "99" }, 
+                    { title: "劇情", value: "18" }, 
                     { title: "家庭", value: "10751" },
-                    { title: "悬疑", value: "9648" }, 
-                    { title: "爱情", value: "10749" },
+                    { title: "懸疑", value: "9648" }, 
+                    { title: "愛情", value: "10749" },
                     { title: "科幻", value: "878" }, 
-                    { title: "战争", value: "10752" },
+                    { title: "戰爭", value: "10752" },
                     { title: "西部", value: "37" }, 
-                    { title: "电视电影", value: "10770" }
+                    { title: "電視電影", value: "10770" }
                 ] 
             },
             { 
                 name: "vote_average.gte", 
-                title: "最低评分", 
+                title: "最低評分", 
                 type: "input", 
-                description: "输入0-10之间的数字（如7）", 
+                description: "輸入0-10之間的數位（如7）", 
                 value: "",
                 placeholder: "0-10"
             },
             { 
                 name: "vote_count.gte", 
-                title: "最少评价数", 
+                title: "最少評價數", 
                 type: "input", 
-                description: "输入最小评价数量", 
+                description: "輸入最小評價數量", 
                 value: "",
                 placeholder: "如：100"
             },
             { 
                 name: "with_keywords", 
-                title: "关键词", 
+                title: "關鍵字", 
                 type: "input", 
-                description: "英文关键词（如'superhero'）", 
+                description: "英文關鍵字（如'superhero'）", 
                 value: "",
-                placeholder: "多个用逗号分隔"
+                placeholder: "多個用逗號分隔"
             },
-            { name: "page", title: "页码", type: "page" }
+            { name: "page", title: "頁碼", type: "page" }
         ]
     },
 
-    // =============IMDB模块=============
+    // =============IMDB模組=============
     {
-      title: "IMDb Top 250 电影",
-      description: "IMDb 用户评分最高的 250 部电影",
+      title: "IMDb Top 250 電影",
+      description: "IMDb 用戶評分最高的 250 部電影",
       requiresWebView: false,
       functionName: "loadImdbCardItems",
       cacheDuration: 3600,
@@ -600,13 +600,13 @@ WidgetMetadata = {
           title: "🔗 列表地址", 
           type: "constant", 
           value: "https://www.imdb.com/chart/top/?ref_=nv_mv_250" },
-        { name: "page", title: "页码", type: "page" },
-        { name: "limit", title: "🔢 每页数量", type: "constant", value: "20" }
+        { name: "page", title: "頁碼", type: "page" },
+        { name: "limit", title: "🔢 每頁數量", type: "constant", value: "20" }
       ]
     },
     {
-      title: "IMDb Top 250 剧集",
-      description: "IMDb 用户评分最高的 250 部剧集",
+      title: "IMDb Top 250 劇集",
+      description: "IMDb 用戶評分最高的 250 部劇集",
       requiresWebView: false,
       functionName: "loadImdbCardItems",
       cacheDuration: 3600,
@@ -615,13 +615,13 @@ WidgetMetadata = {
           title: "🔗 列表地址", 
           type: "constant", 
           value: "https://www.imdb.com/chart/toptv/?ref_=nv_tvv_250" },
-        { name: "page", title: "页码", type: "page" },
-        { name: "limit", title: "🔢 每页数量", type: "constant", value: "20" }
+        { name: "page", title: "頁碼", type: "page" },
+        { name: "limit", title: "🔢 每頁數量", type: "constant", value: "20" }
       ]
     },
     {
-      title: "IMDB 自定义片单",
-      description: "解析 IMDB 热门电影/剧集等网页片单 (需输入 URL)",
+      title: "IMDB 自訂片單",
+      description: "解析 IMDB 熱門電影/劇集等網頁片單 (需輸入 URL)",
       requiresWebView: false,
       functionName: "loadImdbCardItems",
       cacheDuration: 3600,
@@ -630,48 +630,48 @@ WidgetMetadata = {
           name: "url", 
           title: "🔗 列表地址", 
           type: "input", 
-          description: "输入 IMDB 片单或榜单地址",
+          description: "輸入 IMDB 片單或榜單地址",
           placeholders: [
-            { title: "时下热门电影", 
+            { title: "時下熱門電影", 
               value: "https://www.imdb.com/chart/moviemeter/?ref_=nv_mv_mpm" },
-            { title: "时下热门剧集", 
+            { title: "時下熱門劇集", 
               value: "https://www.imdb.com/chart/tvmeter/?ref_=nv_tvv_mptv" }
           ]
         },
-        { name: "page", title: "页码", type: "page" },
-        { name: "limit", title: "🔢 每页数量", type: "constant", value: "20" }
+        { name: "page", title: "頁碼", type: "page" },
+        { name: "limit", title: "🔢 每頁數量", type: "constant", value: "20" }
       ]
     },
-    // =============BGM模块=============
+    // =============BGM模組=============
 {
-    title: "Bangumi 近期热门动画",
-    description: "浏览近期热门动画",
+    title: "Bangumi 近期熱門動畫",
+    description: "瀏覽近期熱門動畫",
     requiresWebView: false,
     functionName: "fetchRecentHot_bg",
     cacheDuration: 3600,
     params: [
-        { name: "page", title: "页码", type: "page" }
+        { name: "page", title: "頁碼", type: "page" }
     ]
 },
 {
-    title: "Bangumi 动画总排行",
-    description: "按年份、季度/全年、标签、分类、题材、地区、受众等浏览动画排行，并可按作品名筛选",
+    title: "Bangumi 動畫總排行",
+    description: "按年份、季度/全年、標籤、分類、題材、地區、受眾等瀏覽動畫排行，並可按作品名篩選",
     requiresWebView: false,
     functionName: "fetchAirtimeRanking_bg",
     cacheDuration: 3600,
     params: [
         { 
             name: "type", 
-            title: "分类", 
+            title: "分類", 
             type: "enumeration", 
             value: "all", 
-            description: "选择动画的放送分类。",
+            description: "選擇動畫的放送分類。",
             enumOptions: [
                 { title: "全部", value: "all" },
                 { title: "TV", value: "tv" },
                 { title: "WEB", value: "web" },
                 { title: "OVA", value: "ova" },
-                { title: "剧场版", value: "movie" },
+                { title: "劇場版", value: "movie" },
                 { title: "其他", value: "misc" }
             ] 
         },
@@ -679,7 +679,7 @@ WidgetMetadata = {
             name: "year", 
             title: "年份", 
             type: "input", 
-            description: "例如: 2024。留空则浏览所有年份。",
+            description: "例如: 2024。留空則瀏覽所有年份。",
             value: ""
         },
         { 
@@ -687,7 +687,7 @@ WidgetMetadata = {
             title: "月份/季度", 
             type: "enumeration", 
             value: "all", 
-            description: "选择全年或特定季度对应的月份。仅当填写了年份时有效。", 
+            description: "選擇全年或特定季度對應的月份。僅當填寫了年份時有效。", 
             enumOptions: [ 
                 { title: "全年", value: "all" }, 
                 { title: "冬季 (1月)", value: "1" }, 
@@ -698,85 +698,85 @@ WidgetMetadata = {
         },
         { 
             name: "tag", 
-            title: "来源/标签 (可选)", 
+            title: "來源/標籤 (可選)", 
             type: "input", 
-            description: "输入主要标签, 如 原创, 漫画改, 轻小说改, 游戏改等。", 
+            description: "輸入主要標籤, 如 原創, 漫畫改, 輕小說改, 遊戲改等。", 
             value: "",
             placeholders: [
-                { title: "原创", value: "原创" }, 
-                { title: "漫画改", value: "漫画改" }, 
-                { title: "轻小说改", value: "轻小说改" }, 
-                { title: "游戏改", value: "游戏改" }, 
-                { title: "小说改", value: "小说改" }
+                { title: "原創", value: "原創" }, 
+                { title: "漫畫改", value: "漫畫改" }, 
+                { title: "輕小說改", value: "輕小說改" }, 
+                { title: "遊戲改", value: "遊戲改" }, 
+                { title: "小說改", value: "小說改" }
             ]
         },
         { 
             name: "genre_tag", 
-            title: "题材 (可选)", 
+            title: "題材 (可選)", 
             type: "enumeration", 
             value: "", 
-            description: "选择动画题材。",
+            description: "選擇動畫題材。",
             enumOptions: [ 
                 { title: "全部", value: "" }, 
                 { title: "科幻", value: "科幻" }, 
-                { title: "喜剧", value: "喜剧" }, 
-                { title: "校园", value: "校园" }, 
-                { title: "战斗", value: "战斗" }, 
-                { title: "恋爱", value: "恋爱" }, 
+                { title: "喜劇", value: "喜劇" }, 
+                { title: "校園", value: "校園" }, 
+                { title: "戰鬥", value: "戰鬥" }, 
+                { title: "戀愛", value: "戀愛" }, 
                 { title: "奇幻", value: "奇幻" }, 
-                { title: "剧情", value: "剧情" }, 
+                { title: "劇情", value: "劇情" }, 
                 { title: "日常", value: "日常" }, 
-                { title: "机战", value: "机战" }, 
-                { title: "运动", value: "运动" }, 
-                { title: "悬疑", value: "悬疑" }, 
-                { title: "音乐", value: "音乐" }, 
-                { title: "治愈", value: "治愈" }, 
+                { title: "機戰", value: "機戰" }, 
+                { title: "運動", value: "運動" }, 
+                { title: "懸疑", value: "懸疑" }, 
+                { title: "音樂", value: "音樂" }, 
+                { title: "治癒", value: "治癒" }, 
                 { title: "百合", value: "百合" }, 
-                { title: "惊悚", value: "惊悚" }, 
-                { title: "后宫", value: "后宫" }, 
+                { title: "驚悚", value: "驚悚" }, 
+                { title: "後宮", value: "後宮" }, 
                 { title: "推理", value: "推理" }, 
                 { title: "耽美", value: "耽美" }, 
-                { title: "冒险", value: "冒险" }, 
+                { title: "冒險", value: "冒險" }, 
                 { title: "萌系", value: "萌系" }, 
                 { title: "穿越", value: "穿越" }, 
                 { title: "玄幻", value: "玄幻" }, 
                 { title: "乙女向", value: "乙女向" }, 
                 { title: "恐怖", value: "恐怖" }, 
-                { title: "历史", value: "历史" }, 
-                { title: "武侠", value: "武侠" }, 
+                { title: "歷史", value: "歷史" }, 
+                { title: "武俠", value: "武俠" }, 
                 { title: "美食", value: "美食" }, 
-                { title: "职场", value: "职场" }
+                { title: "職場", value: "職場" }
             ]
         },
         {
             name: "region", 
-            title: "地区 (可选)", 
+            title: "地區 (可選)", 
             type: "enumeration", 
             value: "",
-            description: "选择动画地区。",
+            description: "選擇動畫地區。",
             enumOptions: [
                 { title: "全部", value: "" }, 
                 { title: "日本", value: "日本" }, 
-                { title: "中国大陆", value: "中国大陆" }, 
-                { title: "美国", value: "美国" }, 
-                { title: "欧美", value: "欧美" }, 
-                { title: "中国香港", value: "中国香港" }, 
-                { title: "中国台湾", value: "中国台湾" },
-                { title: "韩国", value: "韩国" }, 
-                { title: "法国", value: "法国" }, 
-                { title: "英国", value: "英国" },
+                { title: "中國大陸", value: "中國大陸" }, 
+                { title: "美國", value: "美國" }, 
+                { title: "歐美", value: "歐美" }, 
+                { title: "中國香港", value: "中國香港" }, 
+                { title: "中國台灣", value: "中國台灣" },
+                { title: "韓國", value: "韓國" }, 
+                { title: "法國", value: "法國" }, 
+                { title: "英國", value: "英國" },
                 { title: "加拿大", value: "加拿大" }, 
-                { title: "德国", value: "德国" }, 
-                { title: "俄罗斯", value: "俄罗斯" },
+                { title: "德國", value: "德國" }, 
+                { title: "俄羅斯", value: "俄羅斯" },
                 { title: "其他", value: "其他"}
             ]
         },
         {
             name: "audience", 
-            title: "受众 (可选)", 
+            title: "受眾 (可選)", 
             type: "enumeration", 
             value: "",
-            description: "选择动画受众。",
+            description: "選擇動畫受眾。",
             enumOptions: [
                 { title: "全部", value: "" }, 
                 { title: "少女向", value: "少女向" }, 
@@ -790,9 +790,9 @@ WidgetMetadata = {
         },
         { 
             name: "title_keyword", 
-            title: "作品名关键词 (可选)", 
+            title: "作品名關鍵字 (可選)", 
             type: "input", 
-            description: "输入关键词在当前结果中过滤作品标题。", 
+            description: "輸入關鍵字在當前結果中過濾作品標題。", 
             value: "" 
         },
         { 
@@ -801,17 +801,17 @@ WidgetMetadata = {
             type: "enumeration", 
             value: "rank", 
             enumOptions: [ 
-                { title: "综合排名", value: "rank" },
-                { title: "热度趋势", value: "trends" },
-                { title: "名称", value: "title" }    
+                { title: "綜合排名", value: "rank" },
+                { title: "熱度趨勢", value: "trends" },
+                { title: "名稱", value: "title" }    
             ] 
         },
-        { name: "page", title: "页码", type: "page" }
+        { name: "page", title: "頁碼", type: "page" }
     ]
 },
 {
-    title: "Bangumi 动画放送日历",
-    description: "查看动画每日/每周放送时间表 (数据来自Bangumi API)",
+    title: "Bangumi 動畫放送日曆",
+    description: "查看動畫每日/每週放送時間表 (數據來自Bangumi API)",
     requiresWebView: false,
     functionName: "fetchDailyCalendarApi_bg",
     sectionMode: false,
@@ -819,21 +819,21 @@ WidgetMetadata = {
     params: [
         {
             name: "filterType",
-            title: "筛选范围",
+            title: "篩選範圍",
             type: "enumeration",
             value: "today",
             enumOptions: [
                 { title: "今日放送", value: "today" },
-                { title: "指定单日", value: "specific_day" },
+                { title: "指定單日", value: "specific_day" },
                 { title: "整周放送", value: "all_week" }
             ]
         },
         {
             name: "specificWeekday",
-            title: "选择星期",
+            title: "選擇星期",
             type: "enumeration",
             value: "1",
-            description: "仅当筛选范围为\"指定单日\"时有效。",
+            description: "僅當篩選範圍為\"指定單日\"時有效。",
             enumOptions: [
                 { title: "星期一", value: "1" },
                 { title: "星期二", value: "2" },
@@ -850,94 +850,94 @@ WidgetMetadata = {
             title: "排序方式", 
             type: "enumeration",
             value: "popularity_rat_bgm",
-            description: "对结果进行排序",
+            description: "對結果進行排序",
             enumOptions: [
-                { title: "热度", value: "popularity_rat_bgm" },
-                { title: "评分", value: "score_bgm_desc" },
+                { title: "熱度", value: "popularity_rat_bgm" },
+                { title: "評分", value: "score_bgm_desc" },
                 { title: "放送日", value: "airdate_desc" },
-                { title: "默认", value: "default" }
+                { title: "默認", value: "default" }
             ]
         },
         {
             name: "dailyRegionFilter", 
-            title: "地区筛选", 
+            title: "地區篩選", 
             type: "enumeration", 
             value: "all",
-            description: "筛选特定地区的放送内容 (主要依赖TMDB数据)",
+            description: "篩選特定地區的放送內容 (主要依賴TMDB數據)",
             enumOptions: [
-                { title: "全部地区", value: "all" },
+                { title: "全部地區", value: "all" },
                 { title: "日本", value: "JP" },
-                { title: "中国大陆", value: "CN" },
-                { title: "欧美", value: "US_EU" },
+                { title: "中國大陸", value: "CN" },
+                { title: "歐美", value: "US_EU" },
                 { title: "其他/未知", value: "OTHER" }
             ]
         }
     ]
 },
 {
-    title: "Bangumi 动画标签",
-    description: "按标签、年份、月份浏览动画列表，支持排序和分页。",
+    title: "Bangumi 動畫標籤",
+    description: "按標籤、年份、月份瀏覽動畫列表，支持排序和分頁。",
     requiresWebView: false,
     functionName: "fetchBangumiTagPage_bg",
     cacheDuration: 3600,
     params: [
         {
             name: "tag_keyword", 
-            title: "动画标签 (可留空)", 
+            title: "動畫標籤 (可留空)", 
             type: "input", 
-            description: "输入单个动画标签如 TV, 漫画改, 原创, 搞笑, 战斗等。支持图片中显示的任意标签。留空则浏览热门标签总览。", 
+            description: "輸入單個動畫標籤如 TV, 漫畫改, 原創, 搞笑, 戰鬥等。支持圖片中顯示的任意標籤。留空則瀏覽熱門標籤總覽。", 
             value: "", 
             placeholders: [
                 { title: "百合", value: "百合" },
-                { title: "伪娘", value: "伪娘" },
+                { title: "偽娘", value: "偽娘" },
                 { title: "搞笑", value: "搞笑" },
-                { title: "原创", value: "原创" },
-                { title: "恋爱", value: "恋爱" },
-                { title: "校园", value: "校园" },
-                { title: "战斗", value: "战斗" },
+                { title: "原創", value: "原創" },
+                { title: "戀愛", value: "戀愛" },
+                { title: "校園", value: "校園" },
+                { title: "戰鬥", value: "戰鬥" },
                 { title: "奇幻", value: "奇幻" },
                 { title: "漫改", value: "漫改" },
                 { title: "日常", value: "日常" },
                 { title: "青春", value: "青春" },
-                { title: "治愈", value: "治愈" },
-                { title: "后宫", value: "后宫" },
-                { title: "异世界", value: "异世界" },
+                { title: "治癒", value: "治癒" },
+                { title: "後宮", value: "後宮" },
+                { title: "異世界", value: "異世界" },
                 { title: "科幻", value: "科幻" },
                 { title: "新房昭之", value: "新房昭之" },
-                { title: "虚渊玄", value: "虚渊玄" },
-                { title: "宫崎骏", value: "宫崎骏" },
+                { title: "虛淵玄", value: "虛淵玄" },
+                { title: "宮崎駿", value: "宮崎駿" },
                 { title: "庵野秀明", value: "庵野秀明" },
-                { title: "新海诚", value: "新海诚" },
-                { title: "汤浅政明", value: "汤浅政明" },
-                { title: "西尾维新", value: "西尾维新" },
+                { title: "新海誠", value: "新海誠" },
+                { title: "湯淺政明", value: "湯淺政明" },
+                { title: "西尾維新", value: "西尾維新" },
                 { title: "今石洋之", value: "今石洋之" },
-                { title: "渡边信一郎", value: "渡边信一郎" },
+                { title: "渡邊信一郎", value: "渡邊信一郎" },
                 { title: "押井守", value: "押井守" },
-                { title: "京都动画 (京阿尼)", value: "京都动画" },
+                { title: "京都動畫 (京阿尼)", value: "京都動畫" },
                 { title: "A-1 Pictures", value: "A-1 Pictures" },
-                { title: "J.C.STAFF (节操社)", value: "J.C.STAFF" },
+                { title: "J.C.STAFF (節操社)", value: "J.C.STAFF" },
                 { title: "MADHOUSE", value: "MADHOUSE" },
-                { title: "BONES (骨头社)", value: "BONES" },
+                { title: "BONES (骨頭社)", value: "BONES" },
                 { title: "P.A.WORKS", value: "P.A.WORKS" },
                 { title: "SHAFT", value: "SHAFT" },
-                { title: "动画工房", value: "动画工房" },
-                { title: "ufotable (飞碟社)", value: "ufotable" },
+                { title: "動畫工房", value: "動畫工房" },
+                { title: "ufotable (飛碟社)", value: "ufotable" },
                 { title: "吉卜力工作室 (吉卜力)", value: "吉卜力工作室" },
-                { title: "请输入其他任意标签...", value: "" }
+                { title: "請輸入其他任意標籤...", value: "" }
             ]
         },
         {
             name: "airtime_year",
-            title: "年份 (可选)",
+            title: "年份 (可選)",
             type: "input",
-            description: "输入4位年份 (如 2024)，或留空以不限年份。可像标签一样自由输入。",
+            description: "輸入4位年份 (如 2024)，或留空以不限年份。可像標籤一樣自由輸入。",
             value: ""
         },
         {
             name: "airtime_month",
-            title: "月份 (可选)",
+            title: "月份 (可選)",
             type: "enumeration",
-            description: "选择放送月份。仅当填写了年份时有效。",
+            description: "選擇放送月份。僅當填寫了年份時有效。",
             value: "",
             enumOptions: [
                 { title: "全年/不限", value: "" },
@@ -961,26 +961,26 @@ WidgetMetadata = {
             type: "enumeration", 
             value: "rank",
             enumOptions: [
-                { title: "综合排名", value: "rank" },   
-                { title: "标注数", value: "collects" }, 
+                { title: "綜合排名", value: "rank" },   
+                { title: "標註數", value: "collects" }, 
                 { title: "日期", value: "date" },     
-                { title: "名称", value: "title" }    
+                { title: "名稱", value: "title" }    
             ]
         },
-        { name: "page", title: "页码", type: "page" }
+        { name: "page", title: "頁碼", type: "page" }
         ]
     }
   ]
 };
 
-// ===============辅助函数===============
+// ===============輔助函數===============
 function formatItemDescription(item) {
     let description = item.description || '';
-    const hasRating = /评分|rating/i.test(description);
+    const hasRating = /評分|rating/i.test(description);
     const hasYear = /年份|year/i.test(description);
     
     if (item.rating && !hasRating) {
-        description = `评分: ${item.rating} | ${description}`;
+        description = `評分: ${item.rating} | ${description}`;
     }
     
     if (item.releaseDate && !hasYear) {
@@ -997,13 +997,13 @@ function formatItemDescription(item) {
 }
 
 function createErrorItem(id, title, error) {
-    const errorMessage = String(error?.message || error || '未知错误');
+    const errorMessage = String(error?.message || error || '未知錯誤');
     const uniqueId = `error-${id.replace(/[^a-zA-Z0-9]/g, '-')}-${Date.now()}`;
     return {
         id: uniqueId,
         type: "error",
-        title: title || "加载失败",
-        description: `错误详情：${errorMessage}`
+        title: title || "載入失敗",
+        description: `錯誤詳情：${errorMessage}`
     };
 }
 
@@ -1016,7 +1016,7 @@ function calculatePagination(params) {
     }
     
     if (page < 1) page = 1;
-    if (limit > 50) throw new Error("单页数量不能超过50");
+    if (limit > 50) throw new Error("單頁數量不能超過50");
 
     const start = (page - 1) * limit;
     return { page, limit, start };
@@ -1034,11 +1034,11 @@ function getBeijingDate() {
     
     return `${year}-${month}-${day}`;
 }
-// ===============豆瓣功能函数===============
+// ===============豆瓣功能函數===============
 async function loadDoubanCardItems(params = {}) {
   try {
     const url = params.url;
-    if (!url) throw new Error("缺少片单 URL");
+    if (!url) throw new Error("缺少片單 URL");
     if (url.includes("douban.com/doulist/")) {
       return loadDoubanDefaultList(params);
     } else if (url.includes("douban.com/subject_collection/")) {
@@ -1047,7 +1047,7 @@ async function loadDoubanCardItems(params = {}) {
         throw new Error("不支持的豆瓣 URL 格式");
     }
   } catch (error) {
-    console.error("解析豆瓣片单失败:", error);
+    console.error("解析豆瓣片單失敗:", error);
     throw error;
   }
 }
@@ -1056,7 +1056,7 @@ async function loadDoubanDefaultList(params = {}) {
   const { start, limit } = calculatePagination(params);
   const url = params.url;
   const listId = url.match(/doulist\/(\d+)/)?.[1];
-  if (!listId) throw new Error("无法从 URL 获取豆瓣豆列 ID");
+  if (!listId) throw new Error("無法從 URL 獲取豆瓣豆列 ID");
   const pageUrl = `https://www.douban.com/doulist/${listId}/?start=${start}&sort=&playable=&sub_type=`;
   const response = await Widget.http.get(pageUrl, {
     headers: {
@@ -1064,9 +1064,9 @@ async function loadDoubanDefaultList(params = {}) {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36",
     },
   });
-  if (!response || !response.data) throw new Error("获取豆瓣豆列数据失败");
+  if (!response || !response.data) throw new Error("獲取豆瓣豆列數據失敗");
   const docId = Widget.dom.parse(response.data);
-  if (docId < 0) throw new Error("解析豆瓣豆列 HTML 失败");
+  if (docId < 0) throw new Error("解析豆瓣豆列 HTML 失敗");
   const itemElements = Widget.dom.select(docId, "div.doulist-item");
   let fallbackItemElements = [];
   if (!itemElements || itemElements.length === 0) {
@@ -1133,7 +1133,7 @@ async function loadDoubanDefaultList(params = {}) {
               doubanIds.push({
                   id: idMatch[1],
                   type: "douban",
-                  title: title ? title.trim() : "未知标题",
+                  title: title ? title.trim() : "未知標題",
                   coverUrl: coverUrl || undefined,
                   description: formatItemDescription({
                       description: description || undefined,
@@ -1143,10 +1143,10 @@ async function loadDoubanDefaultList(params = {}) {
                   rating: rating ? parseFloat(rating) : undefined
                 });
           } else {
-             console.warn("解析豆列项时未找到 subject ID, Title:", title, "Link:", link);
+             console.warn("解析豆列項時未找到 subject ID, Title:", title, "Link:", link);
           }
       } else {
-         console.warn("在豆列项中未找到标题链接元素, Item ID:", itemId);
+         console.warn("在豆列項中未找到標題連結元素, Item ID:", itemId);
       }
   }
   return doubanIds;
@@ -1186,7 +1186,7 @@ async function loadDoubanItemsFromApi(params = {}) {
 
 async function loadDoubanSubjectCollection(params = {}) {
   const listIdMatch = params.url.match(/subject_collection\/(\w+)/);
-  if (!listIdMatch) throw new Error("无法从 URL 获取豆瓣合集 ID");
+  if (!listIdMatch) throw new Error("無法從 URL 獲取豆瓣合集 ID");
   const listId = listIdMatch[1];
   const { start, limit } = calculatePagination(params);
   const apiUrl = `https://m.douban.com/rexxar/api/v2/subject_collection/${listId}/items`;
@@ -1237,13 +1237,13 @@ async function loadDoubanRecommendItems(params = {}, mediaType = "movie") {
     let dynamicDesc = "";
     switch(sortBy) {
       case "U":
-        dynamicDesc = "近期热度排序";
+        dynamicDesc = "近期熱度排序";
         break;
       case "R":
-        dynamicDesc = `首映时间: ${releaseYear || '未知'}`;
+        dynamicDesc = `首映時間: ${releaseYear || '未知'}`;
         break;
       case "S":
-        dynamicDesc = `评分: ${rating?.toFixed(1) || '无'}`;
+        dynamicDesc = `評分: ${rating?.toFixed(1) || '無'}`;
         break;
       default: // T
         dynamicDesc = item.card_subtitle || item.description || "";
@@ -1265,13 +1265,13 @@ async function loadDoubanRecommendItems(params = {}, mediaType = "movie") {
   });
 }
 
-//===============TMDB功能函数===============
+//===============TMDB功能函數===============
 async function fetchTmdbData(api, params) {
     try {
         const response = await Widget.tmdb.get(api, { params: params });
 
         if (!response) {
-            throw new Error("获取数据失败");
+            throw new Error("獲取數據失敗");
         }
 
         const data = response.results;
@@ -1305,8 +1305,8 @@ async function fetchTmdbData(api, params) {
                 };
             });
     } catch (error) {
-        console.error("调用 TMDB API 失败:", error);
-        return [createErrorItem("tmdb-api", "API调用失败", error)];
+        console.error("調用 TMDB API 失敗:", error);
+        return [createErrorItem("tmdb-api", "API調用失敗", error)];
     }
 }
 
@@ -1335,7 +1335,7 @@ async function tmdbUpcomingMovies(params) {
     const api = "discover/movie";
     const beijingDate = getBeijingDate();
     const discoverParams = {
-        language: params.language || 'zh-CN',
+        language: params.language || 'zh-TW',
         page: params.page || 1,
         sort_by: 'primary_release_date.asc',
         'primary_release_date.gte': params['primary_release_date.gte'] || beijingDate,
@@ -1365,7 +1365,7 @@ async function tmdbDiscoverByNetwork(params = {}) {
     const api = "discover/tv";
     const beijingDate = getBeijingDate();
     const discoverParams = {
-        language: params.language || 'zh-CN',
+        language: params.language || 'zh-TW',
         page: params.page || 1,
         with_networks: params.with_networks,
         sort_by: params.sort_by || "first_air_date.desc",
@@ -1392,7 +1392,7 @@ async function tmdbCompanies(params = {}) {
 
         const cleanParams = {
             page: params.page || 1,
-            language: params.language || "zh-CN",
+            language: params.language || "zh-TW",
             sort_by: params.sort_by || "primary_release_date.desc",
             include_adult: false,
             include_video: false
@@ -1414,23 +1414,23 @@ async function tmdbCompanies(params = {}) {
 
         return await fetchTmdbData(api, cleanParams);
     } catch (error) {
-        console.error('公司数据加载失败:', error);
-        return [createErrorItem('companies', '数据加载失败', error)];
+        console.error('公司數據載入失敗:', error);
+        return [createErrorItem('companies', '數據載入失敗', error)];
     }
 }
 
-//===============IMDB功能函数===============
+//===============IMDB功能函數===============
 async function loadImdbCardItems(params = {}) {
   const url = params.url;
-  if (!url) throw new Error("缺少 IMDB 片单 URL");
+  if (!url) throw new Error("缺少 IMDB 片單 URL");
   const response = await Widget.http.get(url, {
     headers: {
       Referer: "https://www.imdb.com/",
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36",
-      "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
+      "Accept-Language": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7",
     },
   });
-  if (!response || !response.data) throw new Error("获取 IMDB 片单数据失败");
+  if (!response || !response.data) throw new Error("獲取 IMDB 片單數據失敗");
   const videoIds = [];
   const ldJsonMatch = response.data.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
   if (ldJsonMatch && ldJsonMatch[1]) {
@@ -1452,12 +1452,12 @@ async function loadImdbCardItems(params = {}) {
               }
           }
       } catch (e) {
-          console.warn("解析 LD+JSON 失败:", e);
+          console.warn("解析 LD+JSON 失敗:", e);
       }
   }
   if (videoIds.length === 0) {
       const docId = Widget.dom.parse(response.data);
-      if (docId < 0) throw new Error("解析 IMDB HTML 失败");
+      if (docId < 0) throw new Error("解析 IMDB HTML 失敗");
       const itemElementIds = Widget.dom.select(docId, "ul.ipc-metadata-list > li, .lister-list > tr");
       for (const itemId of itemElementIds) {
           try {
@@ -1492,7 +1492,7 @@ async function loadImdbCardItems(params = {}) {
                   }
               }
           } catch (parseError) {
-              console.error("IMDB 解析错误:", parseError);
+              console.error("IMDB 解析錯誤:", parseError);
           }
       }
   }
@@ -1500,7 +1500,7 @@ async function loadImdbCardItems(params = {}) {
   const end = start + limit;
   return videoIds.slice(start, end);
 }
-//===============BGM功能函数===============
+//===============BGM功能函數===============
 const WidgetConfig_bg = {
     MAX_CONCURRENT_DETAILS_FETCH: 10, 
     MAX_CONCURRENT_TMDB_SEARCHES: 4, 
@@ -1575,7 +1575,7 @@ const CONSTANTS_bg = {
     BGM_API_TYPE_MAPPING: { 2: "anime" },
     JS_DAY_TO_BGM_API_ID: { 0: 7, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6 },
     REGION_FILTER_US_EU_COUNTRIES: ["US", "GB", "FR", "DE", "CA", "AU", "ES", "IT"],
-    SHORT_FILM_KEYWORDS: ["短片", "short film", "short", "动画短片", "short animation", "ショートフィルム", "短篇"], 
+    SHORT_FILM_KEYWORDS: ["短片", "short film", "short", "動畫短片", "short animation", "ショートフィルム", "短篇"], 
 };
 
 const CacheUtil_bg = {
@@ -1586,7 +1586,7 @@ const CacheUtil_bg = {
             try {
                 return `${type}_${JSON.stringify(Object.keys(identifier).sort().reduce((obj, key) => { obj[key] = identifier[key]; return obj; }, {}))}`;
             } catch (e) {
-                if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [缓存工具] 生成对象标识符缓存键失败:`, identifier, e.message);
+                if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [快取工具] 生成對象標識符快取鍵失敗:`, identifier, e.message);
                 let fallbackKeyPart = '';
                 if (typeof identifier === 'object' && !Array.isArray(identifier)) {
                     try {
@@ -1595,10 +1595,10 @@ const CacheUtil_bg = {
                         });
                         if (fallbackKeyPart) return `${type}${fallbackKeyPart}`;
                     } catch (fallbackError) {
-                         if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [缓存工具] 回退缓存键生成失败:`, fallbackError.message);
+                         if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [快取工具] 回退快取鍵生成失敗:`, fallbackError.message);
                     }
                 }
-                console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [缓存工具] 严重错误: 使用可能非唯一的备用缓存键，标识符为:`, identifier);
+                console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [快取工具] 嚴重錯誤: 使用可能非唯一的備用快取鍵，標識符為:`, identifier);
                 return `${type}_${String(identifier)}_ERROR_POTENTIALLY_NON_UNIQUE`;
             }
         }
@@ -1607,15 +1607,15 @@ const CacheUtil_bg = {
     get: function(type, identifier) {
         const key = this._generateKey(type, identifier);
         if (this.pendingPromises.has(key)) {
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [缓存工具] 等待进行中Promise: ${key.substring(0, 80)}...`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [快取工具] 等待進行中Promise: ${key.substring(0, 80)}...`);
             return this.pendingPromises.get(key);
         }
         const entry = this.cache.get(key);
         if (entry && Date.now() < entry.expiry) {
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [缓存工具] 命中缓存: ${key.substring(0, 80)}...`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [快取工具] 命中快取: ${key.substring(0, 80)}...`);
             return Promise.resolve(entry.value);
         } else if (entry) {
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [缓存工具] 缓存过期: ${key.substring(0, 80)}...`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [快取工具] 快取過期: ${key.substring(0, 80)}...`);
             this.cache.delete(key);
             this.pendingPromises.delete(key);
         }
@@ -1627,12 +1627,12 @@ const CacheUtil_bg = {
         const ttlToUse = typeof customTtl === 'number' ? customTtl : WidgetConfig_bg.CACHE_TTL_MS;
 
         return valuePromise.then(value => {
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [缓存工具] 设置缓存: ${key.substring(0, 80)}... (TTL: ${ttlToUse / 1000}s)`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [快取工具] 設置快取: ${key.substring(0, 80)}... (TTL: ${ttlToUse / 1000}s)`);
             this.cache.set(key, { value: value, expiry: Date.now() + ttlToUse });
             this.pendingPromises.delete(key);
             return value;
         }).catch(error => {
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [缓存工具] Promise执行失败，从pending移除: ${key.substring(0, 80)}...`, error.message);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [快取工具] Promise執行失敗，從pending移除: ${key.substring(0, 80)}...`, error.message);
             this.pendingPromises.delete(key);
             throw error;
         });
@@ -1654,17 +1654,17 @@ const PrefetchCache_bg = {
     get: function(url) {
         const entry = this.prefetchedHtml.get(url);
         if (entry && (Date.now() - entry.timestamp < WidgetConfig_bg.PREFETCH_CACHE_TTL_MS)) {
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [预取缓存] 命中: ${url}`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [預取快取] 命中: ${url}`);
             return entry.promise;
         }
         if (entry) {
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [预取缓存] 过期或无效: ${url}`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [預取快取] 過期或無效: ${url}`);
             this.prefetchedHtml.delete(url);
         }
         return null;
     },
     set: function(url, htmlPromise) {
-        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [预取缓存] 开始预取并设置Promise: ${url}`);
+        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [預取快取] 開始預取並設置Promise: ${url}`);
         const entry = { promise: htmlPromise, timestamp: Date.now(), inProgress: true };
         this.prefetchedHtml.set(url, entry);
 
@@ -1675,7 +1675,7 @@ const PrefetchCache_bg = {
                 htmlPromise.catch(() => {
                     if (this.prefetchedHtml.get(url) === entry) {
                         this.prefetchedHtml.delete(url);
-                        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [预取缓存] 预取失败后删除条目: ${url}`);
+                        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [預取快取] 預取失敗後刪除條目: ${url}`);
                     }
                 });
              }
@@ -1690,7 +1690,7 @@ const PrefetchCache_bg = {
             }
             if (oldestKey) {
                 this.prefetchedHtml.delete(oldestKey);
-                if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [预取缓存] 清理最旧条目: ${oldestKey}`);
+                if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [預取快取] 清理最舊條目: ${oldestKey}`);
             }
         }
         return htmlPromise;
@@ -1698,7 +1698,7 @@ const PrefetchCache_bg = {
     fetchAndCacheHtml: function(url, headers) {
         let existingEntry = this.prefetchedHtml.get(url);
         if (existingEntry && (existingEntry.inProgress || (Date.now() - existingEntry.timestamp < WidgetConfig_bg.PREFETCH_CACHE_TTL_MS))) {
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [预取缓存] 使用现有预取Promise: ${url}`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [預取快取] 使用現有預取Promise: ${url}`);
             return existingEntry.promise;
         }
         if (existingEntry) { 
@@ -1706,12 +1706,12 @@ const PrefetchCache_bg = {
         }
         const newHtmlPromise = fetchWithRetry_bg(url, { headers }, 'get', false, WidgetConfig_bg.HTTP_RETRIES) 
             .then(response => {
-                if (!response?.data) throw new Error(`预取 ${url} 无有效数据`);
-                if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [预取缓存] 预取成功，获得HTML: ${url}`);
+                if (!response?.data) throw new Error(`預取 ${url} 無有效數據`);
+                if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [預取快取] 預取成功，獲得HTML: ${url}`);
                 return response.data;
             })
             .catch(err => {              
-                if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [预取缓存] 预取网络请求失败 ${url}: ${err.message}`);
+                if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [預取快取] 預取網路請求失敗 ${url}: ${err.message}`);
                 throw err;
             });
         return this.set(url, newHtmlPromise); 
@@ -1728,7 +1728,7 @@ async function fetchWithRetry_bg(url, options, method = 'get', isTmdb = false, c
     while (attempts <= maxRetries) {
         try {
             if (WidgetConfig_bg.DEBUG_LOGGING && attempts > 0) {
-                console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [HTTP] 第 ${attempts + 1} 次尝试 ${url.substring(0, 80)}...`);
+                console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [HTTP] 第 ${attempts + 1} 次嘗試 ${url.substring(0, 80)}...`);
             }
             const api = isTmdb ? Widget.tmdb : Widget.http; 
 
@@ -1769,7 +1769,7 @@ async function fetchWithRetry_bg(url, options, method = 'get', isTmdb = false, c
             const isAuthError = String(error.message).includes("401") || String(error.message).includes("403");
 
             if (WidgetConfig_bg.DEBUG_LOGGING || attempts > maxRetries || isAuthError) {
-                console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [HTTP] 获取 ${url.substring(0, 80)}... 错误 (尝试 ${attempts}/${maxRetries + 1}):`, error.message);
+                console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [HTTP] 獲取 ${url.substring(0, 80)}... 錯誤 (嘗試 ${attempts}/${maxRetries + 1}):`, error.message);
             }
 
             if (isAuthError) throw error; 
@@ -1779,7 +1779,7 @@ async function fetchWithRetry_bg(url, options, method = 'get', isTmdb = false, c
             await new Promise(resolve => setTimeout(resolve, retryDelay * delayMultiplier));
         }
     }
-    throw new Error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [HTTP] 达到最大重试次数 ${url}`); 
+    throw new Error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [HTTP] 達到最大重試次數 ${url}`); 
 }
 
 function isEarlySeason_bg(year, month, currentDate = new Date()) {
@@ -1798,43 +1798,43 @@ function isEarlySeason_bg(year, month, currentDate = new Date()) {
 function calculateContentTTL_bg(identifier, context) {
     const { category, year, month, sort } = identifier; 
     const currentDate = context.currentDate || new Date();
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL计算] 传入标识符:`, identifier);
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL計算] 傳入標識符:`, identifier);
 
     if (sort === 'trends') return WidgetConfig_bg.TTL_TRENDS_MS;
     
     if (year && year !== "" && month && month !== "" && month !== 'all') { 
         if (isEarlySeason_bg(year, month, currentDate)) {
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL计算] 使用季度早期TTL for ${year}-${month}`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL計算] 使用季度早期TTL for ${year}-${month}`);
             return WidgetConfig_bg.TTL_SEASON_EARLY_MS;
         } else {
             const seasonStartDate = new Date(parseInt(year, 10), parseInt(month, 10) - 1, 1);
             const monthsSinceSeasonStart = (currentDate.getFullYear() - seasonStartDate.getFullYear()) * 12 + (currentDate.getMonth() - seasonStartDate.getMonth());
             if (monthsSinceSeasonStart > 6) { 
-                 if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL计算] 使用存档TTL for ${year}-${month}`);
+                 if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL計算] 使用存檔TTL for ${year}-${month}`);
                  return WidgetConfig_bg.TTL_ARCHIVE_MS;
             }
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL计算] 使用季度后期TTL for ${year}-${month}`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL計算] 使用季度後期TTL for ${year}-${month}`);
             return WidgetConfig_bg.TTL_SEASON_LATE_MS;
         }
     } else if (year && year !== "") { 
         if (parseInt(year,10) < currentDate.getFullYear() -1) {
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL计算] 使用存档TTL for year ${year}`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL計算] 使用存檔TTL for year ${year}`);
             return WidgetConfig_bg.TTL_ARCHIVE_MS; 
         }
-        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL计算] 使用排行TTL for year ${year}`);
+        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL計算] 使用排行TTL for year ${year}`);
         return WidgetConfig_bg.TTL_RANK_MS; 
     }
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL计算] 使用默认排行TTL`);
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TTL計算] 使用默認排行TTL`);
     return WidgetConfig_bg.TTL_RANK_MS; 
 }
 
 function normalizeTmdbQuery_bg(query) { if (!query || typeof query !== 'string') return ""; return query.toLowerCase().trim().replace(/[\\[\\]【】（）()「」『』:：\\-－_,\\.\\・]/g, ' ').replace(/\\s+/g, ' ').trim();}
 function getInfoFromBox_bg($, labelText) { let value = '';const listItems = $('#infobox li');for (let i = 0; i < listItems.length; i++) { const liElement = listItems.eq(i); const tipSpan = liElement.find('span.tip').first(); if (tipSpan.text().trim() === labelText) { value = liElement.clone().children('span.tip').remove().end().text().trim(); return value; } } return value; }
-function parseDate_bg(dateStr) { if (!dateStr || typeof dateStr !== 'string') return ''; dateStr = dateStr.trim(); let match; match = dateStr.match(/^(\\d{4})年(\\d{1,2})月(\\d{1,2})日/); if (match) return `${match[1]}-${String(match[2]).padStart(2, '0')}-${String(match[3]).padStart(2, '0')}`; match = dateStr.match(/^(\\d{4})年(\\d{1,2})月(?!日)/); if (match) return `${match[1]}-${String(match[2]).padStart(2, '0')}-01`; match = dateStr.match(/^(\\d{4})年(冬|春|夏|秋)/); if (match) { let m = '01'; if (match[2] === '春') m = '04'; else if (match[2] === '夏') m = '07'; else if (match[2] === '秋') m = '10'; return `${match[1]}-${m}-01`; } match = dateStr.match(/^(\\d{4})年(?![\\d月春夏秋冬])/); if (match) return `${match[1]}-01-01`; match = dateStr.match(/^(\\d{4})[-/](\\d{1,2})[-/](\\d{1,2})/); if (match) return `${match[1]}-${String(match[2]).padStart(2, '0')}-${String(match[3]).padStart(2, '0')}`; match = dateStr.match(/^(\\d{4})[-/](\\d{1,2})(?!.*[-/])/); if (match) return `${match[1]}-${String(match[2]).padStart(2, '0')}-01`; match = dateStr.match(/^(\\d{4})$/); if (match) return `${match[1]}-01-01`; if (WidgetConfig_bg.DEBUG_LOGGING && dateStr) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [日期解析] 无法解析日期字符串: "${dateStr}"`); return '';}
+function parseDate_bg(dateStr) { if (!dateStr || typeof dateStr !== 'string') return ''; dateStr = dateStr.trim(); let match; match = dateStr.match(/^(\\d{4})年(\\d{1,2})月(\\d{1,2})日/); if (match) return `${match[1]}-${String(match[2]).padStart(2, '0')}-${String(match[3]).padStart(2, '0')}`; match = dateStr.match(/^(\\d{4})年(\\d{1,2})月(?!日)/); if (match) return `${match[1]}-${String(match[2]).padStart(2, '0')}-01`; match = dateStr.match(/^(\\d{4})年(冬|春|夏|秋)/); if (match) { let m = '01'; if (match[2] === '春') m = '04'; else if (match[2] === '夏') m = '07'; else if (match[2] === '秋') m = '10'; return `${match[1]}-${m}-01`; } match = dateStr.match(/^(\\d{4})年(?![\\d月春夏秋冬])/); if (match) return `${match[1]}-01-01`; match = dateStr.match(/^(\\d{4})[-/](\\d{1,2})[-/](\\d{1,2})/); if (match) return `${match[1]}-${String(match[2]).padStart(2, '0')}-${String(match[3]).padStart(2, '0')}`; match = dateStr.match(/^(\\d{4})[-/](\\d{1,2})(?!.*[-/])/); if (match) return `${match[1]}-${String(match[2]).padStart(2, '0')}-01`; match = dateStr.match(/^(\\d{4})$/); if (match) return `${match[1]}-01-01`; if (WidgetConfig_bg.DEBUG_LOGGING && dateStr) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [日期解析] 無法解析日期字串: "${dateStr}"`); return '';}
 
 function populateItemFromTmdbFullDetail_bg(itemRef, tmdbDetail) {
     if (!tmdbDetail) {
-        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB填充工具] 未提供TMDB详情对象（TMDB ID ${itemRef.tmdb_id || 'N/A'}, BGM ID ${itemRef.link?.split('/').pop() || itemRef.id}）。`);
+        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB填充工具] 未提供TMDB詳情對象（TMDB ID ${itemRef.tmdb_id || 'N/A'}, BGM ID ${itemRef.link?.split('/').pop() || itemRef.id}）。`);
         return;
     }
     itemRef.tmdb_overview = tmdbDetail.overview || itemRef.tmdb_overview || "";
@@ -1871,10 +1871,10 @@ function populateItemFromTmdbFullDetail_bg(itemRef, tmdbDetail) {
     }
     itemRef.tmdb_preferred_title = bestChineseTitleFromTmdb || itemRef.title; 
     if (bestChineseTitleFromTmdb && bestChineseTitleFromTmdb !== itemRef.title) {
-        if(WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB填充工具] 更新 TMDB ID ${itemRef.tmdb_id} 的主标题为 TMDB 中文翻译: "${bestChineseTitleFromTmdb.substring(0,30)}..." (原 BGM 链接 ID: ${itemRef.link?.split('/').pop() || 'N/A'})`);
+        if(WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB填充工具] 更新 TMDB ID ${itemRef.tmdb_id} 的主標題為 TMDB 中文翻譯: "${bestChineseTitleFromTmdb.substring(0,30)}..." (原 BGM 連結 ID: ${itemRef.link?.split('/').pop() || 'N/A'})`);
         itemRef.title = bestChineseTitleFromTmdb;
     }
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB填充工具] 条目 (TMDB ID ${itemRef.tmdb_id}) 已从完整详情填充。`);
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB填充工具] 條目 (TMDB ID ${itemRef.tmdb_id}) 已從完整詳情填充。`);
 }
 
 
@@ -2107,7 +2107,7 @@ function generateTmdbSearchQueries_bg(originalTitle, chineseTitle, listTitle) {
     let queriesToProcess = Array.from(coreQueries).filter(q => q && q.length > 0);
     queriesToProcess = [...new Set(queriesToProcess)];
     if (queriesToProcess.length > WidgetConfig_bg.MAX_TOTAL_TMDB_QUERIES_TO_PROCESS) {
-        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB搜索] 查询词过多 (${queriesToProcess.length}), 截断为 ${WidgetConfig_bg.MAX_TOTAL_TMDB_QUERIES_TO_PROCESS} 个`);
+        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB搜索] 查詢詞過多 (${queriesToProcess.length}), 截斷為 ${WidgetConfig_bg.MAX_TOTAL_TMDB_QUERIES_TO_PROCESS} 個`);
         queriesToProcess = queriesToProcess.slice(0, WidgetConfig_bg.MAX_TOTAL_TMDB_QUERIES_TO_PROCESS);
     }
     return queriesToProcess;
@@ -2132,7 +2132,7 @@ async function searchTmdb_bg(originalTitle, chineseTitle, listTitle, searchMedia
             if (preciseQueryText) {
                 if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB搜索S1] ${searchIdentifierForLog} Query: "${preciseQueryText}", Year: ${validYear}`);
                 try {
-                    const params = { query: preciseQueryText, language: "zh-CN", include_adult: true }; 
+                    const params = { query: preciseQueryText, language: "zh-TW", include_adult: true }; 
                     if (searchMediaType === CONSTANTS_bg.MEDIA_TYPES.TV) {
                         params.first_air_date_year = validYear;
                     } else {
@@ -2160,7 +2160,7 @@ async function searchTmdb_bg(originalTitle, chineseTitle, listTitle, searchMedia
                             }
                             
                             if (searchMediaType === CONSTANTS_bg.MEDIA_TYPES.TV && !(result.genre_ids && result.genre_ids.includes(CONSTANTS_bg.TMDB_ANIMATION_GENRE_ID))) { 
-                                if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB搜索S1] ${searchIdentifierForLog} 跳过非动画TV结果 "${result.name || result.title}" (ID: ${result.id})`); 
+                                if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB搜索S1] ${searchIdentifierForLog} 跳過非動畫TV結果 "${result.name || result.title}" (ID: ${result.id})`); 
                                 continue; 
                             }
                             
@@ -2206,7 +2206,7 @@ async function searchTmdb_bg(originalTitle, chineseTitle, listTitle, searchMedia
         
         const queryPromises = queriesToProcess.map(query => async () => {
             try {
-                const params = { query: query, language: "zh-CN", include_adult: true }; 
+                const params = { query: query, language: "zh-TW", include_adult: true }; 
                 const tmdbSearchResponse = await fetchWithRetry_bg(`/search/${searchMediaType}`, { params }, 'get', true, WidgetConfig_bg.HTTP_MAIN_RETRIES);
                 if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB搜索S2RawRsp] ${searchIdentifierForLog} Query:"${query}", Raw TMDB Response: ${JSON.stringify(tmdbSearchResponse)?.substring(0, 500)}`);
                 const searchResults = tmdbSearchResponse?.results || (Array.isArray(tmdbSearchResponse) ? tmdbSearchResponse : null);
@@ -2229,7 +2229,7 @@ async function searchTmdb_bg(originalTitle, chineseTitle, listTitle, searchMedia
                         }
                         
                         if (searchMediaType === CONSTANTS_bg.MEDIA_TYPES.TV && !(result.genre_ids && result.genre_ids.includes(CONSTANTS_bg.TMDB_ANIMATION_GENRE_ID))) { 
-                            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB搜索S2] ${searchIdentifierForLog} Query:"${query}", 跳过非动画TV结果 "${result.name || result.title}" (ID: ${result.id})`); 
+                            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB搜索S2] ${searchIdentifierForLog} Query:"${query}", 跳過非動畫TV結果 "${result.name || result.title}" (ID: ${result.id})`); 
                             continue; 
                         }
                         const scoringDataS2 = bgmItemDataForScoringOverride || {
@@ -2282,31 +2282,31 @@ async function searchTmdb_bg(originalTitle, chineseTitle, listTitle, searchMedia
             return bestOverallMatch;
         }
         if (WidgetConfig_bg.DEBUG_LOGGING) { 
-            console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB搜索] ${searchIdentifierForLog} 未找到满意的TMDB匹配项. 最高得分:${highestOverallScore.toFixed(2)} (阈值:${WidgetConfig_bg.TMDB_SEARCH_MIN_SCORE_THRESHOLD})`);
+            console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB搜索] ${searchIdentifierForLog} 未找到滿意的TMDB匹配項. 最高得分:${highestOverallScore.toFixed(2)} (閾值:${WidgetConfig_bg.TMDB_SEARCH_MIN_SCORE_THRESHOLD})`);
         }
         return null; 
     });
 }
 
 function parseBangumiListItems_bg(htmlContent) {
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM列表解析_V2_DEBUG] 传入HTML内容 (前500字符): ${typeof htmlContent === 'string' ? htmlContent.substring(0, 500) : 'HTML内容非字符串或为空'}`);
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM列表解析_V2_DEBUG] 傳入HTML內容 (前500字元): ${typeof htmlContent === 'string' ? htmlContent.substring(0, 500) : 'HTML內容非字串或為空'}`);
     const $ = Widget.html.load(htmlContent); 
     const pendingItems = [];
     const listItemsSelector = 'ul#browserItemList li.item';
     const $listItems = $(listItemsSelector);
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM列表解析_V2_DEBUG] 使用选择器 "${listItemsSelector}" 找到 ${$listItems.length} 个列表项元素。`);
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM列表解析_V2_DEBUG] 使用選擇器 "${listItemsSelector}" 找到 ${$listItems.length} 個列表項元素。`);
 
     $listItems.each((index, element) => {
         const $item = $(element); let subjectId = $item.attr('id');
         if (subjectId && subjectId.startsWith('item_')) { subjectId = subjectId.substring(5); } else { 
-            if(WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM列表解析_V2_DEBUG] 无法解析条目ID for item at index ${index}:`, $item.find('h3 a.l').text() || '未知条目'); 
+            if(WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM列表解析_V2_DEBUG] 無法解析條目ID for item at index ${index}:`, $item.find('h3 a.l').text() || '未知條目'); 
             return; 
         }
         const titleElement = $item.find('div.inner > h3 > a.l'); 
         const title = titleElement.text().trim(); 
         const detailLink = titleElement.attr('href');
         if (!detailLink || !detailLink.trim()) { 
-            if(WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM列表解析_V2_DEBUG] 条目 "${title}" (ID: ${subjectId}) 没有有效的详情链接，已跳过。`); 
+            if(WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM列表解析_V2_DEBUG] 條目 "${title}" (ID: ${subjectId}) 沒有有效的詳情連結，已跳過。`); 
             return; 
         }
         const fullDetailLink = `${WidgetConfig_bg.BGM_BASE_URL}${detailLink}`; 
@@ -2316,11 +2316,11 @@ function parseBangumiListItems_bg(htmlContent) {
         const infoTextFromList = $item.find('div.inner > p.info.tip').text().trim();
         
         if (WidgetConfig_bg.DEBUG_LOGGING) {
-            console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM列表解析_V2_DEBUG] 解析到条目 ${index + 1}: ID=${subjectId}, Title='${title.substring(0,30)}', Link='${detailLink}', Cover='${listCoverUrl ? listCoverUrl.substring(0,50) + "..." : "N/A"}', Rating='${rating}', Info='${infoTextFromList.substring(0,50)}...'`);
+            console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM列表解析_V2_DEBUG] 解析到條目 ${index + 1}: ID=${subjectId}, Title='${title.substring(0,30)}', Link='${detailLink}', Cover='${listCoverUrl ? listCoverUrl.substring(0,50) + "..." : "N/A"}', Rating='${rating}', Info='${infoTextFromList.substring(0,50)}...'`);
         }
         pendingItems.push({ id: subjectId, titleFromList: title, detailLink: fullDetailLink, coverFromList: listCoverUrl, ratingFromList: rating || "0", infoTextFromList: infoTextFromList });
     });
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM列表解析_V2_DEBUG] 函数结束，解析到 ${pendingItems.length} 个潜在条目。`);
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM列表解析_V2_DEBUG] 函數結束，解析到 ${pendingItems.length} 個潛在條目。`);
     return pendingItems;
 }
 
@@ -2367,15 +2367,15 @@ async function processTmdbFullDetailQueue_bg() {
     const batchSize = WidgetConfig_bg.MAX_CONCURRENT_TMDB_FULL_DETAILS_FETCH;
     const currentBatch = tmdbFullDetailFetchQueue_bg.splice(0, batchSize);
 
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB完整详情队列] 处理批次大小: ${currentBatch.length}`);
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB完整詳情隊列] 處理批次大小: ${currentBatch.length}`);
     const promises = currentBatch.map(async (task) => {
         const { itemRef, tmdbSearchType, tmdbId } = task;
         try {
             if (!WidgetConfig_bg.FETCH_FULL_TMDB_DETAILS) {
-                if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB完整详情队列] 警告: TMDB ID ${tmdbId} 的任务在队列中，但 FETCH_FULL_TMDB_DETAILS 为 false，已跳过。`);
+                if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB完整詳情隊列] 警告: TMDB ID ${tmdbId} 的任務在隊列中，但 FETCH_FULL_TMDB_DETAILS 為 false，已跳過。`);
                 return;
             }
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB完整详情队列] 正在获取/填充 TMDB ID ${tmdbId} 的详情 (类型: ${tmdbSearchType})`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB完整詳情隊列] 正在獲取/填充 TMDB ID ${tmdbId} 的詳情 (類型: ${tmdbSearchType})`);
             
             const tmdbDetail = await CacheUtil_bg.cachedOrFetch(
                 CONSTANTS_bg.CACHE_KEYS.TMDB_FULL_DETAIL,
@@ -2383,7 +2383,7 @@ async function processTmdbFullDetailQueue_bg() {
                 async () => {
                     const response = await fetchWithRetry_bg(
                         `/${tmdbSearchType}/${tmdbId}`,
-                        { params: { language: "zh-CN", append_to_response: WidgetConfig_bg.TMDB_APPEND_TO_RESPONSE } },
+                        { params: { language: "zh-TW", append_to_response: WidgetConfig_bg.TMDB_APPEND_TO_RESPONSE } },
                         'get', true, WidgetConfig_bg.HTTP_MAIN_RETRIES
                     );
                     return response?.data || response;
@@ -2393,14 +2393,14 @@ async function processTmdbFullDetailQueue_bg() {
             if (tmdbDetail) {
                 populateItemFromTmdbFullDetail_bg(itemRef, tmdbDetail);
             } else if (WidgetConfig_bg.DEBUG_LOGGING) {
-                console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB完整详情队列] TMDB ID ${tmdbId} 从API/缓存未返回详情对象。`);
+                console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB完整詳情隊列] TMDB ID ${tmdbId} 從API/快取未返回詳情對象。`);
             }
-        } catch (e) { if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB完整详情队列] 处理 TMDB ID ${tmdbId} 失败:`, e.message, e.stack?.substring(0,100)); }
+        } catch (e) { if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB完整詳情隊列] 處理 TMDB ID ${tmdbId} 失敗:`, e.message, e.stack?.substring(0,100)); }
     });
     await Promise.allSettled(promises);
     isTmdbFullDetailFetchRunning_bg = false;
     if (tmdbFullDetailFetchQueue_bg.length > 0) Promise.resolve().then(processTmdbFullDetailQueue_bg);
-    else if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB完整详情队列] 处理完毕。`);
+    else if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB完整詳情隊列] 處理完畢。`);
 }
 
 async function integrateTmdbDataToItem_bg(baseItem, tmdbResult, tmdbSearchType, bgmOriginalYear, isLikelyMovieOrShort, isShortFilm) {
@@ -2422,7 +2422,7 @@ async function integrateTmdbDataToItem_bg(baseItem, tmdbResult, tmdbSearchType, 
 
         if (yearMismatchForShortFilm) {
             if (WidgetConfig_bg.DEBUG_LOGGING) {
-                console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB集成] 短片年份不匹配 (BGM: ${bgmYear}, TMDB: ${tmdbYear}). 仅记录 TMDB ID (${tmdbResult.id}) for BGM ID ${baseItem.bgm_id}. 保留BGM原始信息 (type: ${baseItem.type}, id: ${baseItem.id}).`);
+                console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB集成] 短片年份不匹配 (BGM: ${bgmYear}, TMDB: ${tmdbYear}). 僅記錄 TMDB ID (${tmdbResult.id}) for BGM ID ${baseItem.bgm_id}. 保留BGM原始資訊 (type: ${baseItem.type}, id: ${baseItem.id}).`);
             }
             baseItem.tmdb_id = String(tmdbResult.id); 
             if (WidgetConfig_bg.FETCH_FULL_TMDB_DETAILS) {
@@ -2463,7 +2463,7 @@ async function integrateTmdbDataToItem_bg(baseItem, tmdbResult, tmdbSearchType, 
              tmdbFullDetailFetchQueue_bg.push({ itemRef: baseItem, tmdbSearchType, tmdbId: tmdbResult.id });
             if (!isTmdbFullDetailFetchRunning_bg) Promise.resolve().then(processTmdbFullDetailQueue_bg);
         } else if (WidgetConfig_bg.DEBUG_LOGGING) {
-            console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB集成] 条目 TMDB ID ${tmdbResult.id} (引用匹配) 已在完整详情队列中。`);
+            console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [TMDB集成] 條目 TMDB ID ${tmdbResult.id} (引用匹配) 已在完整詳情隊列中。`);
         }
     } else {
         const currentDescription = String(baseItem.description || "");
@@ -2477,12 +2477,12 @@ async function integrateTmdbDataToItem_bg(baseItem, tmdbResult, tmdbSearchType, 
 async function getBangumiDetailCover_bg(subjectId, subjectDetailUrl, bangumiAccessToken = null, bangumiCookie = null) { 
     const cacheKeyParams = { subjectId }; 
     return CacheUtil_bg.cachedOrFetch(CONSTANTS_bg.CACHE_KEYS.BGM_DETAIL_COVER, cacheKeyParams, async () => {
-        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情封面] 尝试获取 BGM ID ${subjectId} 的高清封面从 ${subjectDetailUrl}, HasToken: ${!!bangumiAccessToken}`); 
+        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情封面] 嘗試獲取 BGM ID ${subjectId} 的高畫質封面從 ${subjectDetailUrl}, HasToken: ${!!bangumiAccessToken}`); 
         try {
             const detailCoverFetchOptions = {
                 headers: { 
                     "Referer": `${WidgetConfig_bg.BGM_BASE_URL}/`,
-                    "Accept-Language": "zh-CN,zh;q=0.9" 
+                    "Accept-Language": "zh-TW,zh;q=0.9" 
                 },
                 bangumiAccessToken: bangumiAccessToken, 
             };
@@ -2507,11 +2507,11 @@ async function getBangumiDetailCover_bg(subjectId, subjectDetailUrl, bangumiAcce
             if (bPoster && !bPoster.startsWith('http') && bPoster.includes('lain.bgm.tv')) {
                 bPoster = (bPoster.startsWith('/') ? 'https:' : 'https:') + bPoster;
             } else if (bPoster && !bPoster.startsWith('http')) {
-                if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情封面] BGM ID ${subjectId} 的封面路径非预期相对路径: ${bPoster}`);
+                if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情封面] BGM ID ${subjectId} 的封面路徑非預期相對路徑: ${bPoster}`);
                 return null;
             }
             return bPoster || null;
-        } catch (e) { if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情封面] 获取 BGM ID ${subjectId} 封面失败: ${e.message}`); return null; }
+        } catch (e) { if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情封面] 獲取 BGM ID ${subjectId} 封面失敗: ${e.message}`); return null; }
     }, { ttl: WidgetConfig_bg.TTL_BGM_DETAIL_COVER_MS });
 }
 
@@ -2558,8 +2558,8 @@ async function getBgmdMap_bg() {
 }
 
 async function fetchItemDetails_bg(pendingItem, categoryHint, rankingContext = {}, bangumiAccessToken = null, bangumiCookie = null) { 
-    const logPrefixDetails = `${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限]`;
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${logPrefixDetails} 处理 BGM ID: ${pendingItem.id} ("${pendingItem.titleFromList.substring(0,30)}...") 分类: ${categoryHint}, ContextYear: ${rankingContext?.year}, HasToken: ${!!bangumiAccessToken}`); 
+    const logPrefixDetails = `${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限]`;
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${logPrefixDetails} 處理 BGM ID: ${pendingItem.id} ("${pendingItem.titleFromList.substring(0,30)}...") 分類: ${categoryHint}, ContextYear: ${rankingContext?.year}, HasToken: ${!!bangumiAccessToken}`); 
 
     let oTitle = pendingItem.titleFromList; 
     let cTitleFromBgmDetail = null; 
@@ -2596,7 +2596,7 @@ async function fetchItemDetails_bg(pendingItem, categoryHint, rankingContext = {
             const detailFetchOptions = { 
                 headers: { 
                     "Referer": `${WidgetConfig_bg.BGM_BASE_URL}/`, 
-                    "Accept-Language": "zh-CN,zh;q=0.9" 
+                    "Accept-Language": "zh-TW,zh;q=0.9" 
                 },
                 bangumiAccessToken: bangumiAccessToken, 
             };
@@ -2605,26 +2605,26 @@ async function fetchItemDetails_bg(pendingItem, categoryHint, rankingContext = {
                 const $ = Widget.html.load(detailHtmlResponse.data);
                 cTitleFromBgmDetail = getInfoFromBox_bg($, "中文名:");
                 if (cTitleFromBgmDetail && WidgetConfig_bg.DEBUG_LOGGING) {
-                    console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] 从BGM详情页 (ID ${pendingItem.id}) 获取到中文名: "${cTitleFromBgmDetail}"`);
+                    console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] 從BGM詳情頁 (ID ${pendingItem.id}) 獲取到中文名: "${cTitleFromBgmDetail}"`);
                 }
                 jTitleFromBgmDetail = getInfoFromBox_bg($, "日文名:") || getInfoFromBox_bg($, "日本語題:") || getInfoFromBox_bg($, "原作名:");
                 if (jTitleFromBgmDetail && WidgetConfig_bg.DEBUG_LOGGING) {
-                    console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] 从BGM详情页 (ID ${pendingItem.id}) 获取到日文名/原作名: "${jTitleFromBgmDetail}"`);
+                    console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] 從BGM詳情頁 (ID ${pendingItem.id}) 獲取到日文名/原作名: "${jTitleFromBgmDetail}"`);
                 }
-                bgmTypeValueFromInfobox = getInfoFromBox_bg($, "类型:");
+                bgmTypeValueFromInfobox = getInfoFromBox_bg($, "類型:");
                 if (WidgetConfig_bg.DEBUG_LOGGING) {
-                    console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] BGM ID ${pendingItem.id} - Infobox 类型 (原始获取值): '${bgmTypeValueFromInfobox}'`);
+                    console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] BGM ID ${pendingItem.id} - Infobox 類型 (原始獲取值): '${bgmTypeValueFromInfobox}'`);
                 }
 
                 const pageTags = [];
                 $('div#subject_detail div.subject_tag_section a.l').each((i, elem) => {
                     pageTags.push($(elem).text().toLowerCase());
                 });
-                if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] BGM ID ${pendingItem.id} - 页面标签: ${JSON.stringify(pageTags)}`);
+                if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] BGM ID ${pendingItem.id} - 頁面標籤: ${JSON.stringify(pageTags)}`);
 
-                const theatricalMovieKeywords = ["剧场版", "动画电影", "电影", "film"];
+                const theatricalMovieKeywords = ["劇場版", "動畫電影", "電影", "film"];
                 const ovaOadKeywords = ["ova", "oad"];
-                const webAnimeKeywords = ["web动画", "webアニメ"];
+                const webAnimeKeywords = ["web動畫", "webアニメ"];
                 const shortFilmKeywordsInTags = ["短片", "short film", "short"];
 
                 const lowerInfoboxType = bgmTypeValueFromInfobox.toLowerCase();
@@ -2638,40 +2638,40 @@ async function fetchItemDetails_bg(pendingItem, categoryHint, rankingContext = {
                         tmdbSType = CONSTANTS_bg.MEDIA_TYPES.MOVIE;
                         isLikelyMovieOrShort = true;
                         isShortFilm = false; 
-                        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] TMDB类型判断 (ID ${pendingItem.id}): 明确为剧场版/电影 -> MOVIE.`);
+                        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] TMDB類型判斷 (ID ${pendingItem.id}): 明確為劇場版/電影 -> MOVIE.`);
                         if (hasShortFilmTag) { 
                             isShortFilm = true;
-                            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] TMDB类型判断 (ID ${pendingItem.id}): 剧场版/电影 同时标记为短片 -> isShortFilm=true.`);
+                            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] TMDB類型判斷 (ID ${pendingItem.id}): 劇場版/電影 同時標記為短片 -> isShortFilm=true.`);
                         }
                     } else if (isOvaOrOad) { 
                         tmdbSType = CONSTANTS_bg.MEDIA_TYPES.TV; 
                         isLikelyMovieOrShort = false;
                         isShortFilm = false;
-                        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] TMDB类型判断 (ID ${pendingItem.id}): 明确为OVA/OAD (且非剧场版) -> TV.`);
+                        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] TMDB類型判斷 (ID ${pendingItem.id}): 明確為OVA/OAD (且非劇場版) -> TV.`);
                     } else if (isWebAnime) {
                         tmdbSType = CONSTANTS_bg.MEDIA_TYPES.MOVIE; 
                         isLikelyMovieOrShort = true;
                         isShortFilm = false; 
-                        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] TMDB类型判断 (ID ${pendingItem.id}): 明确为WEB动画 -> MOVIE.`);
+                        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] TMDB類型判斷 (ID ${pendingItem.id}): 明確為WEB動畫 -> MOVIE.`);
                         if (hasShortFilmTag) {
                            isShortFilm = true;
-                           if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] TMDB类型判断 (ID ${pendingItem.id}): WEB动画 同时标记为短片 -> isShortFilm=true.`);
+                           if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] TMDB類型判斷 (ID ${pendingItem.id}): WEB動畫 同時標記為短片 -> isShortFilm=true.`);
                         }
                     } else if (hasShortFilmTag) { 
                         tmdbSType = CONSTANTS_bg.MEDIA_TYPES.MOVIE;
                         isLikelyMovieOrShort = true;
                         isShortFilm = true;
-                        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] TMDB类型判断 (ID ${pendingItem.id}): 仅有短片标签 -> MOVIE, isShortFilm=true.`);
+                        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] TMDB類型判斷 (ID ${pendingItem.id}): 僅有短片標籤 -> MOVIE, isShortFilm=true.`);
                     } else {
-                        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] TMDB类型判断 (ID ${pendingItem.id}): 未匹配特定电影/OVA/WEB/短片类型，维持默认 tmdbSType=${tmdbSType} (通常是TV).`);
+                        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] TMDB類型判斷 (ID ${pendingItem.id}): 未匹配特定電影/OVA/WEB/短片類型，維持默認 tmdbSType=${tmdbSType} (通常是TV).`);
                     }
                 } else {
-                     if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] TMDB类型判断 (ID ${pendingItem.id}): 已通过Infobox/页面标签明确判断为TV (determinedByInfoboxTV=${determinedByInfoboxTV}, determinedByPageTagTV=${determinedByPageTagTV}).`);
+                     if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] TMDB類型判斷 (ID ${pendingItem.id}): 已通過Infobox/頁面標籤明確判斷為TV (determinedByInfoboxTV=${determinedByInfoboxTV}, determinedByPageTagTV=${determinedByPageTagTV}).`);
                 }
 
                 let detailPagePoster = await getBangumiDetailCover_bg(String(pendingItem.id), pendingItem.detailLink, bangumiAccessToken, bangumiCookie); 
                 if (detailPagePoster) bPoster = detailPagePoster;
-                let rDateStrFromDetail = getInfoFromBox_bg($, "放送开始:") || getInfoFromBox_bg($, "上映年度:");
+                let rDateStrFromDetail = getInfoFromBox_bg($, "放送開始:") || getInfoFromBox_bg($, "上映年度:");
                 if (rDateStrFromDetail) {
                     const parsedDetailDate = parseDate_bg(rDateStrFromDetail);
                     if (parsedDetailDate) rDate = parsedDetailDate;
@@ -2679,7 +2679,7 @@ async function fetchItemDetails_bg(pendingItem, categoryHint, rankingContext = {
             }
         }
     } catch (htmlError) {
-        console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] 获取/解析BGM详情页中文名/海报/日期失败 (ID ${pendingItem.id}):`, htmlError.message);
+        console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] 獲取/解析BGM詳情頁中文名/海報/日期失敗 (ID ${pendingItem.id}):`, htmlError.message);
     }
     
     const item = buildBaseItemStructure_bg(pendingItem, { oTitle, cTitle: cTitleFromBgmDetail, bPoster, rDate, dMTWidget, fRating });
@@ -2698,7 +2698,7 @@ async function fetchItemDetails_bg(pendingItem, categoryHint, rankingContext = {
                     async () => {
                         const response = await fetchWithRetry_bg(
                             `/${bgmdEntry.tmdbType}/${bgmdEntry.tmdbId}`,
-                            { params: { language: "zh-CN", append_to_response: WidgetConfig_bg.TMDB_APPEND_TO_RESPONSE } },
+                            { params: { language: "zh-TW", append_to_response: WidgetConfig_bg.TMDB_APPEND_TO_RESPONSE } },
                             'get', true, WidgetConfig_bg.HTTP_MAIN_RETRIES
                         );
                         return response?.data || response;
@@ -2745,12 +2745,12 @@ async function fetchItemDetails_bg(pendingItem, categoryHint, rankingContext = {
         if (/^\d{4}$/.test(yearFromItemReleaseDate)) { 
             yearForTmdb = yearFromItemReleaseDate;
             if (WidgetConfig_bg.DEBUG_LOGGING) {
-                console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] Fallback: 从 item.releaseDate ("${item.releaseDate}") 提取到年份: ${yearForTmdb} for BGM ID ${pendingItem.id}`);
+                console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] Fallback: 從 item.releaseDate ("${item.releaseDate}") 提取到年份: ${yearForTmdb} for BGM ID ${pendingItem.id}`);
             }
         }
     }
     
-    const bgmSummaryForCheck = item.description || pendingItem.summary || getInfoFromBox_bg(Widget.html.load(pendingItem.detailLink ? (await PrefetchCache_bg.fetchAndCacheHtml(pendingItem.detailLink, {})) : ""), "简介") || pendingItem.infoTextFromList || "";
+    const bgmSummaryForCheck = item.description || pendingItem.summary || getInfoFromBox_bg(Widget.html.load(pendingItem.detailLink ? (await PrefetchCache_bg.fetchAndCacheHtml(pendingItem.detailLink, {})) : ""), "簡介") || pendingItem.infoTextFromList || "";
     const bgmHasChineseSummary = /[\u4e00-\u9fa5]/.test(bgmSummaryForCheck);
     const bgmRatingTotalFromBgm = pendingItem.rating?.total || item.bgm_rating_total || 0; 
 
@@ -2765,9 +2765,9 @@ async function fetchItemDetails_bg(pendingItem, categoryHint, rankingContext = {
         bgm_summary_exists_in_chinese: bgmHasChineseSummary,
         bgm_id_for_log: String(pendingItem.id) 
     };
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] bgmItemDataForScoring for BGM ID ${pendingItem.id}: ${JSON.stringify(bgmItemDataForScoring).substring(0,300)}...`);
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] bgmItemDataForScoring for BGM ID ${pendingItem.id}: ${JSON.stringify(bgmItemDataForScoring).substring(0,300)}...`);
 
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] TMDB搜索 for BGM ID ${pendingItem.id}: 原名="${jTitleFromBgmDetail || oTitle}", 中文名="${cTitleFromBgmDetail || ''}", 列表标题="${oTitle}", 最终年份="${yearForTmdb}", 类型="${tmdbSType}", isMovieOrShort=${isLikelyMovieOrShort}, isShort=${isShortFilm}`);
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] TMDB搜索 for BGM ID ${pendingItem.id}: 原名="${jTitleFromBgmDetail || oTitle}", 中文名="${cTitleFromBgmDetail || ''}", 列表標題="${oTitle}", 最終年份="${yearForTmdb}", 類型="${tmdbSType}", isMovieOrShort=${isLikelyMovieOrShort}, isShort=${isShortFilm}`);
     
     const tmdbRes = await searchTmdb_bg(
         jTitleFromBgmDetail || oTitle, 
@@ -2781,13 +2781,13 @@ async function fetchItemDetails_bg(pendingItem, categoryHint, rankingContext = {
     );
 
     if (tmdbRes?.id) {
-        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] TMDB匹配成功 for BGM ID ${pendingItem.id}. TMDB ID: ${tmdbRes.id}`);
+        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] TMDB匹配成功 for BGM ID ${pendingItem.id}. TMDB ID: ${tmdbRes.id}`);
         await integrateTmdbDataToItem_bg(item, tmdbRes, tmdbSType, yearForTmdb, isLikelyMovieOrShort, isShortFilm);
     } else {
-        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] TMDB匹配失败 for BGM ID ${pendingItem.id}. 将使用 BGM 列表数据并尝试获取BGM详情页数据。`);
+        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] TMDB匹配失敗 for BGM ID ${pendingItem.id}. 將使用 BGM 列表數據並嘗試獲取BGM詳情頁數據。`);
         try {
-            const detailHtmlResponse = await fetchWithRetry_bg( pendingItem.detailLink, { headers: { "User-Agent": WidgetConfig_bg.BGM_API_USER_AGENT, "Referer": `${WidgetConfig_bg.BGM_BASE_URL}/`, "Accept-Language": "zh-CN,zh;q=0.9" } }, 'get', false, WidgetConfig_bg.HTTP_MAIN_RETRIES );
-            if (!detailHtmlResponse?.data) throw new Error(`Bangumi详情页数据为空或无效: ${pendingItem.detailLink}`);
+            const detailHtmlResponse = await fetchWithRetry_bg( pendingItem.detailLink, { headers: { "User-Agent": WidgetConfig_bg.BGM_API_USER_AGENT, "Referer": `${WidgetConfig_bg.BGM_BASE_URL}/`, "Accept-Language": "zh-TW,zh;q=0.9" } }, 'get', false, WidgetConfig_bg.HTTP_MAIN_RETRIES );
+            if (!detailHtmlResponse?.data) throw new Error(`Bangumi詳情頁數據為空或無效: ${pendingItem.detailLink}`);
             
             const $ = Widget.html.load(detailHtmlResponse.data);
             item.title = ($('h1.nameSingle > a').first().text().trim()) || item.title;
@@ -2797,14 +2797,14 @@ async function fetchItemDetails_bg(pendingItem, categoryHint, rankingContext = {
             let detailPagePoster = await getBangumiDetailCover_bg(String(pendingItem.id), pendingItem.detailLink, bangumiAccessToken, bangumiCookie); 
             if (detailPagePoster) item.posterPath = detailPagePoster;
             
-            let rDateStrFromDetail = getInfoFromBox_bg($, "放送开始:") || getInfoFromBox_bg($, "上映年度:");
+            let rDateStrFromDetail = getInfoFromBox_bg($, "放送開始:") || getInfoFromBox_bg($, "上映年度:");
             item.releaseDate = parseDate_bg(rDateStrFromDetail) || item.releaseDate;
             item.rating = ($('#panelInterestWrapper .global_rating .number').text().trim()) || item.rating;
-            const summaryFromDetail = getInfoFromBox_bg($, "简介");
+            const summaryFromDetail = getInfoFromBox_bg($, "簡介");
             if(summaryFromDetail) item.description = summaryFromDetail;
 
         } catch (htmlError) {
-            console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] 获取/解析BGM HTML详情页失败 (ID ${pendingItem.id}):`, htmlError.message);
+            console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] 獲取/解析BGM HTML詳情頁失敗 (ID ${pendingItem.id}):`, htmlError.message);
         }
     }
 
@@ -2812,41 +2812,41 @@ async function fetchItemDetails_bg(pendingItem, categoryHint, rankingContext = {
         const logItemOutput = {...item};
         if(logItemOutput.tmdb_overview?.length>30) logItemOutput.tmdb_overview = logItemOutput.tmdb_overview.substring(0,27)+"...";
         if(logItemOutput.description?.length>30) logItemOutput.description = logItemOutput.description.substring(0,27)+"...";
-        console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM详情_极限] 处理完成: BGM_ID:${pendingItem.id}, 最终ID:${logItemOutput.id}, 类型:${logItemOutput.type}, 标题:"${logItemOutput.title.substring(0,30)}"...`);
+        console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM詳情_極限] 處理完成: BGM_ID:${pendingItem.id}, 最終ID:${logItemOutput.id}, 類型:${logItemOutput.type}, 標題:"${logItemOutput.title.substring(0,30)}"...`);
     }
     return item;
 }
 
 async function processBangumiPage_bg(url, categoryHint, currentPageString, rankingContextInfo = {}, bangumiAccessToken = null, bangumiCookie = null) { 
     const currentPage = currentPageString ? parseInt(currentPageString, 10) : 0;
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM页面处理_V2_DEBUG] 列表页URL: ${url}, 当前页: ${currentPage > 0 ? currentPage : '未知/1'}, Context: ${JSON.stringify(rankingContextInfo)}, HasToken: ${!!bangumiAccessToken}`); 
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM頁面處理_V2_DEBUG] 列表頁URL: ${url}, 當前頁: ${currentPage > 0 ? currentPage : '未知/1'}, Context: ${JSON.stringify(rankingContextInfo)}, HasToken: ${!!bangumiAccessToken}`); 
     
     let listHtml;
     const commonHeaders = { 
         "Referer": `${WidgetConfig_bg.BGM_BASE_URL}/`, 
-        "Accept-Language": "zh-CN,zh;q=0.9" 
+        "Accept-Language": "zh-TW,zh;q=0.9" 
     };
     const fetchOptions = { headers: commonHeaders, bangumiAccessToken: bangumiAccessToken, bangumiCookieString: bangumiCookie }; 
 
     const prefetchedHtmlPromise = PrefetchCache_bg.get(url); 
     if (prefetchedHtmlPromise) { 
-        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM页面处理] 使用预取缓存中的HTML Promise: ${url}`); 
+        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM頁面處理] 使用預取快取中的HTML Promise: ${url}`); 
         try { listHtml = await prefetchedHtmlPromise; } 
         catch (e) { 
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM页面处理] 预取HTML的Promise解析失败 (${url}): ${e.message}。将尝试重新获取。`); 
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM頁面處理] 預取HTML的Promise解析失敗 (${url}): ${e.message}。將嘗試重新獲取。`); 
             listHtml = null; 
         }
     }
 
     if (!listHtml) { 
-        if (WidgetConfig_bg.DEBUG_LOGGING && !prefetchedHtmlPromise) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM页面处理] 未在预取缓存中找到或预取失败，正常获取HTML: ${url}`); 
+        if (WidgetConfig_bg.DEBUG_LOGGING && !prefetchedHtmlPromise) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM頁面處理] 未在預取快取中找到或預取失敗，正常獲取HTML: ${url}`); 
         try { 
             const listHtmlResp = await fetchWithRetry_bg(url, fetchOptions, 'get', false, WidgetConfig_bg.HTTP_MAIN_RETRIES); 
-            if (!listHtmlResp?.data) throw new Error("列表页响应数据为空或无效"); 
+            if (!listHtmlResp?.data) throw new Error("列表頁響應數據為空或無效"); 
             listHtml = listHtmlResp.data; 
         } catch (e) { 
-            console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM页面处理] 获取列表页 ${url} 失败:`, e.message); 
-            throw new Error(`请求Bangumi列表页失败: ${e.message}`); 
+            console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM頁面處理] 獲取列表頁 ${url} 失敗:`, e.message); 
+            throw new Error(`請求Bangumi列表頁失敗: ${e.message}`); 
         } 
     }
     if (currentPage >= 1) { 
@@ -2864,7 +2864,7 @@ async function processBangumiPage_bg(url, categoryHint, currentPageString, ranki
 
             if (nextPageUrlToPrefetch && nextPageUrlToPrefetch !== url) {
                 if (WidgetConfig_bg.DEBUG_LOGGING) {
-                    console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM页面处理] 触发预取 (第 ${i} 页往前): 页 ${pageNumToPrefetch}, URL: ${nextPageUrlToPrefetch}`);
+                    console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM頁面處理] 觸發預取 (第 ${i} 頁往前): 頁 ${pageNumToPrefetch}, URL: ${nextPageUrlToPrefetch}`);
                 }
                 PrefetchCache_bg.fetchAndCacheHtml(nextPageUrlToPrefetch, commonHeaders).catch(() => {
                 });
@@ -2873,23 +2873,23 @@ async function processBangumiPage_bg(url, categoryHint, currentPageString, ranki
     }
     const pendingItems = parseBangumiListItems_bg(listHtml);
 
-    if (pendingItems.length === 0) { if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM页面处理] 从HTML未解析到任何条目。`); return []; }
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM页面处理] 解析到 ${pendingItems.length} 个条目。开始并发获取详情 (最大并发: ${WidgetConfig_bg.MAX_CONCURRENT_DETAILS_FETCH})...`);
+    if (pendingItems.length === 0) { if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM頁面處理] 從HTML未解析到任何條目。`); return []; }
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM頁面處理] 解析到 ${pendingItems.length} 個條目。開始並發獲取詳情 (最大並發: ${WidgetConfig_bg.MAX_CONCURRENT_DETAILS_FETCH})...`);
     const results = [];
     for (let i = 0; i < pendingItems.length; i += WidgetConfig_bg.MAX_CONCURRENT_DETAILS_FETCH) {
         const batch = pendingItems.slice(i, i + WidgetConfig_bg.MAX_CONCURRENT_DETAILS_FETCH);
-        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM页面处理] 处理详情批次 ${Math.floor(i/WidgetConfig_bg.MAX_CONCURRENT_DETAILS_FETCH)+1} (数量: ${batch.length})`);
+        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM頁面處理] 處理詳情批次 ${Math.floor(i/WidgetConfig_bg.MAX_CONCURRENT_DETAILS_FETCH)+1} (數量: ${batch.length})`);
         const detailPromises = batch.map(item => CacheUtil_bg.cachedOrFetch( 
             CONSTANTS_bg.CACHE_KEYS.ITEM_DETAIL_COMPUTED, 
             { itemId: item.id, category: categoryHint, scriptVer: CONSTANTS_bg.SCRIPT_VERSION, callingContextYear: rankingContextInfo?.year || 'all' }, 
             () => fetchItemDetails_bg(item, categoryHint, rankingContextInfo, bangumiAccessToken, null), 
             { calculateTTL: calculateContentTTL_bg, context: { currentDate: new Date() }, ttlIdentifier: rankingContextInfo } 
-        ).catch(e => { console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM页面处理] 条目详情处理失败 (BGM ID: ${item.id}): `, e.message); return null; }) );
+        ).catch(e => { console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM頁面處理] 條目詳情處理失敗 (BGM ID: ${item.id}): `, e.message); return null; }) );
         const settledResults = await Promise.allSettled(detailPromises);
-        settledResults.forEach(sr => { if (sr.status === 'fulfilled' && sr.value) { results.push(sr.value); } else if (sr.status === 'rejected') { console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM页面处理] 一个条目详情Promise被拒绝:`, sr.reason?.message); } });
+        settledResults.forEach(sr => { if (sr.status === 'fulfilled' && sr.value) { results.push(sr.value); } else if (sr.status === 'rejected') { console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM頁面處理] 一個條目詳情Promise被拒絕:`, sr.reason?.message); } });
     }
 
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM页面处理] 列表页处理完成。返回 ${results.length} 条有效结果.`);
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [BGM頁面處理] 列表頁處理完成。返回 ${results.length} 條有效結果.`);
     return results;
 }
 
@@ -2897,9 +2897,9 @@ async function fetchRecentHot_bg(params = {}) {
     const page = params.page || "1";
     const category = CONSTANTS_bg.MEDIA_TYPES.ANIME; 
     const url = `${WidgetConfig_bg.BGM_BASE_URL}/${category}/browser/?sort=trends&page=${page}`;
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [模式] 获取近期热门动画: 页=${page}`);
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [模式] 獲取近期熱門動畫: 頁=${page}`);
     try { return await processBangumiPage_bg(url, category, page, { category, sort: 'trends' }); }
-    catch (error) { console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [模式] fetchRecentHot_bg(页码:${page}) 发生顶层错误:`, error.message); return []; }
+    catch (error) { console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [模式] fetchRecentHot_bg(頁碼:${page}) 發生頂層錯誤:`, error.message); return []; }
 }
 
 async function fetchAirtimeRanking_bg(params = {}) { 
@@ -2945,7 +2945,7 @@ async function fetchAirtimeRanking_bg(params = {}) {
     let rankingContextIdentifierSuffix = `_type-${typeFilter}_year-${yearFilter}_month-${monthFilter}_mainTag-${mainTagFilter}_genre-${genreTagFilter}_region-${regionFilter}_audience-${audienceFilter}`;
 
     if (WidgetConfig_bg.DEBUG_LOGGING) {
-        console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [fetchAirtimeRanking_bg参数] URL: ${url}, 关键词: '${title_keyword}', 排序: ${sort}, 页码: ${page}`);
+        console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [fetchAirtimeRanking_bg參數] URL: ${url}, 關鍵字: '${title_keyword}', 排序: ${sort}, 頁碼: ${page}`);
     }
     
     try {
@@ -2965,7 +2965,7 @@ async function fetchAirtimeRanking_bg(params = {}) {
         let results = await processBangumiPage_bg(url, category, page, rankingContextInfo, null, null); 
         
         if (title_keyword && results && results.length > 0) {
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [fetchAirtimeRanking_bg] 关键词过滤: "${title_keyword}" on ${results.length} items.`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [fetchAirtimeRanking_bg] 關鍵字過濾: "${title_keyword}" on ${results.length} items.`);
             results = results.filter(item => {
                 const itemTitle = normalizeTmdbQuery_bg(item.title);
                 const itemOriginalTitle = normalizeTmdbQuery_bg(item.tmdb_original_title);
@@ -2976,17 +2976,17 @@ async function fetchAirtimeRanking_bg(params = {}) {
                        (itemBgmName && itemBgmName.includes(title_keyword)) ||
                        (itemBgmNameCn && itemBgmNameCn.includes(title_keyword));
             });
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [fetchAirtimeRanking_bg] 关键词过滤后剩余: ${results.length} items.`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [fetchAirtimeRanking_bg] 關鍵字過濾後剩餘: ${results.length} items.`);
         }
         return results;
     } catch (error) {
-        console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [模式] fetchAirtimeRanking_bg (URL: ${url}) 发生顶层错误:`, error.message, error.stack);
+        console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [模式] fetchAirtimeRanking_bg (URL: ${url}) 發生頂層錯誤:`, error.message, error.stack);
         return [];
     }
 }
 
 async function enhanceCalendarItemInBackground_bg(apiItemData, initialVideoItem) {
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送增强] 处理 BGM ID: ${apiItemData.id}, 初始标题: ${initialVideoItem.title.substring(0,30)}`);
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送增強] 處理 BGM ID: ${apiItemData.id}, 初始標題: ${initialVideoItem.title.substring(0,30)}`);
     
     let tmdbResultForLogic = null;
     let finalPosterPath = initialVideoItem.posterPath;
@@ -2999,14 +2999,14 @@ async function enhanceCalendarItemInBackground_bg(apiItemData, initialVideoItem)
         
         tmdbSearchType = CONSTANTS_bg.MEDIA_TYPES.TV; 
         const titleLowerForTypeCheck = (itemTitleForSearch || "").toLowerCase();
-        if (titleLowerForTypeCheck.includes("movie") || titleLowerForTypeCheck.includes("剧场版") || titleLowerForTypeCheck.includes("映画")) {
+        if (titleLowerForTypeCheck.includes("movie") || titleLowerForTypeCheck.includes("劇場版") || titleLowerForTypeCheck.includes("映畫")) {
             tmdbSearchType = CONSTANTS_bg.MEDIA_TYPES.MOVIE;
         }
 
         tmdbResultForLogic = await searchTmdb_bg(bgmName, bgmNameCn, itemTitleForSearch, tmdbSearchType, itemYear);
 
         if (tmdbResultForLogic?.id) {
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送增强] TMDB 匹配成功 for BGM ID ${bgmId}: TMDB ID ${tmdbResultForLogic.id}, 类型: ${tmdbSearchType}`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送增強] TMDB 匹配成功 for BGM ID ${bgmId}: TMDB ID ${tmdbResultForLogic.id}, 類型: ${tmdbSearchType}`);
             
             initialVideoItem.id = String(tmdbResultForLogic.id);
             initialVideoItem.type = "tmdb";
@@ -3020,7 +3020,7 @@ async function enhanceCalendarItemInBackground_bg(apiItemData, initialVideoItem)
             initialVideoItem.link = null;
 
             try {
-                const basicTmdbDetailResponse = await fetchWithRetry_bg(`/${tmdbSearchType}/${tmdbResultForLogic.id}`, { params: { language: "zh-CN" } }, 'get', true, 1);
+                const basicTmdbDetailResponse = await fetchWithRetry_bg(`/${tmdbSearchType}/${tmdbResultForLogic.id}`, { params: { language: "zh-TW" } }, 'get', true, 1);
                 const basicTmdbDetail = basicTmdbDetailResponse?.data || basicTmdbDetailResponse;
                 if (basicTmdbDetail) {
                     if (basicTmdbDetail.origin_country && Array.isArray(basicTmdbDetail.origin_country) && basicTmdbDetail.origin_country.length > 0) {
@@ -3035,7 +3035,7 @@ async function enhanceCalendarItemInBackground_bg(apiItemData, initialVideoItem)
                     }
                 }
             } catch (e) {
-                if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送增强] 获取TMDB ID ${tmdbResultForLogic.id} 初步国家/投票数信息失败: ${e.message}`);
+                if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送增強] 獲取TMDB ID ${tmdbResultForLogic.id} 初步國家/投票數資訊失敗: ${e.message}`);
             }
 
             if (WidgetConfig_bg.FETCH_FULL_TMDB_DETAILS) {
@@ -3043,7 +3043,7 @@ async function enhanceCalendarItemInBackground_bg(apiItemData, initialVideoItem)
                 if(!isTmdbFullDetailFetchRunning_bg) Promise.resolve().then(processTmdbFullDetailQueue_bg);
             }
         } else {
-            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送增强] TMDB 未匹配 BGM ID ${bgmId}.`);
+            if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送增強] TMDB 未匹配 BGM ID ${bgmId}.`);
             initialVideoItem.bgm_score = apiItemData.rating?.score || 0;
             initialVideoItem.bgm_rating_total = apiItemData.rating?.total || 0;
             const bgmDetailUrl = bgmUrl || `${WidgetConfig_bg.BGM_BASE_URL}/subject/${bgmId}`;
@@ -3055,11 +3055,11 @@ async function enhanceCalendarItemInBackground_bg(apiItemData, initialVideoItem)
         initialVideoItem.posterPath = finalPosterPath;
         CacheUtil_bg.set(CONSTANTS_bg.CACHE_KEYS.CALENDAR_ITEM_FINAL_DISPLAY, String(bgmId), Promise.resolve({...initialVideoItem}), WidgetConfig_bg.TTL_CALENDAR_ITEM_ENHANCED_MS);
         
-        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送增强] 处理完成 BGM ID: ${bgmId}. 最终ID: ${initialVideoItem.id}, 类型: ${initialVideoItem.type}`);
+        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送增強] 處理完成 BGM ID: ${bgmId}. 最終ID: ${initialVideoItem.id}, 類型: ${initialVideoItem.type}`);
         return initialVideoItem;
 
     } catch (error) {
-        console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送增强] 处理 BGM ID ${apiItemData.id} 时发生错误:`, error.message, error.stack);
+        console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送增強] 處理 BGM ID ${apiItemData.id} 時發生錯誤:`, error.message, error.stack);
         initialVideoItem.bgm_score = apiItemData.rating?.score || 0;
         initialVideoItem.bgm_rating_total = apiItemData.rating?.total || 0;
         return initialVideoItem;
@@ -3072,7 +3072,7 @@ async function fetchDailyCalendarApi_bg(params = {}) {
     const sortOrder = params.dailySortOrder || "popularity_rat_bgm";
     const regionFilter = params.dailyRegionFilter || "all";
 
-    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送] 参数 - 筛选: ${filterType}, 星期: ${specificWeekdayParam}, 排序: ${sortOrder}, 区域: ${regionFilter}`);
+    if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送] 參數 - 篩選: ${filterType}, 星期: ${specificWeekdayParam}, 排序: ${sortOrder}, 區域: ${regionFilter}`);
     
     const actualApiUrl = `https://api.bgm.tv/calendar`;
     try {
@@ -3081,14 +3081,14 @@ async function fetchDailyCalendarApi_bg(params = {}) {
             'weekly_broadcast_data_v1.2_bg', 
             async () => {
                 const response = await Widget.http.get(actualApiUrl, { headers: { "User-Agent": WidgetConfig_bg.BGM_API_USER_AGENT } });
-                if (!response || !response.data) throw new Error("Bangumi 日历 API 响应为空或无效");
+                if (!response || !response.data) throw new Error("Bangumi 日曆 API 響應為空或無效");
                 return response.data;
             },
             { ttl: WidgetConfig_bg.TTL_CALENDAR_API_MS }
         );
 
         if (!Array.isArray(apiResponse)) {
-            console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送 API] 响应数据格式不正确。`); return [];
+            console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送 API] 響應數據格式不正確。`); return [];
         }
 
         let filteredApiItems = [];
@@ -3102,7 +3102,7 @@ async function fetchDailyCalendarApi_bg(params = {}) {
             targetBgmApiWeekdayId = parseInt(specificWeekdayParam, 10); 
              if (isNaN(targetBgmApiWeekdayId) || targetBgmApiWeekdayId < 1 || targetBgmApiWeekdayId > 7) {
                 targetBgmApiWeekdayId = CONSTANTS_bg.JS_DAY_TO_BGM_API_ID[currentJsDay]; 
-                if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送] 无效的指定星期: ${specificWeekdayParam}，已默认为今天。`);
+                if (WidgetConfig_bg.DEBUG_LOGGING) console.warn(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送] 無效的指定星期: ${specificWeekdayParam}，已預設為今天。`);
             }
         }
         
@@ -3191,7 +3191,7 @@ async function fetchDailyCalendarApi_bg(params = {}) {
                         if (!timeA && !timeB) return 0; if (!timeA) return 1; if (!timeB) return -1;
                         return timeB - timeA;
                     }
-                } catch (e) { console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送排序错误]`, e); return 0; }
+                } catch (e) { console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送排序錯誤]`, e); return 0; }
                 return 0;
             });
         }
@@ -3216,11 +3216,11 @@ async function fetchDailyCalendarApi_bg(params = {}) {
             });
         }
         
-        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送 API] 最终处理完成，返回 ${finalFilteredResults.length} 个条目。`);
+        if (WidgetConfig_bg.DEBUG_LOGGING) console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [每日放送 API] 最終處理完成，返回 ${finalFilteredResults.length} 個條目。`);
         return finalFilteredResults;
 
     } catch (error) {
-        console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [模式] fetchDailyCalendarApi_bg 发生错误:`, error.message, error.stack);
+        console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [模式] fetchDailyCalendarApi_bg 發生錯誤:`, error.message, error.stack);
         return [];
     }
 }
@@ -3265,7 +3265,7 @@ async function fetchBangumiTagPage_bg(params = {}) {
     url = `${basePath}?sort=${sort}&page=${page}`;
 
     if (WidgetConfig_bg.DEBUG_LOGGING) {
-        console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [模式] 获取 Bangumi 动画标签页: URL=${url}, Params=${JSON.stringify(params)}`); 
+        console.log(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [模式] 獲取 Bangumi 動畫標籤頁: URL=${url}, Params=${JSON.stringify(params)}`); 
     }
 
     try {
@@ -3278,7 +3278,7 @@ async function fetchBangumiTagPage_bg(params = {}) {
         };
         return await processBangumiPage_bg(url, category, page, tagContextInfo, null, null); 
     } catch (error) {
-        console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [模式] fetchBangumiTagPage_bg(标签:'${tagKeyword}', 排序:${sort}, 页:${page}) 发生顶层错误:`, error.message, error.stack);
+        console.error(`${CONSTANTS_bg.LOG_PREFIX_GENERAL} [模式] fetchBangumiTagPage_bg(標籤:'${tagKeyword}', 排序:${sort}, 頁:${page}) 發生頂層錯誤:`, error.message, error.stack);
         return [];
     }
 }
